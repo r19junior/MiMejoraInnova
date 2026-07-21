@@ -1,0 +1,176 @@
+---
+import { PRICING_BASE, PRICING_OPTIONS } from '../../data/portfolioData';
+---
+
+<section id="servicios-calculadora" class="relative py-32 px-6 sm:px-12 max-w-7xl mx-auto">
+  
+  <div class="space-y-16 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-l-2 border-[#d4af37] pl-6">
+      <div class="space-y-3">
+        <span class="text-xs uppercase tracking-widest text-[#d4af37] font-mono font-semibold">07. Soluciones & Estimador</span>
+        <h2 class="section-title font-display text-white">
+          Calculadora de <span class="font-serif italic font-normal text-gradient-gold">Inversión & Alcance</span>
+        </h2>
+      </div>
+      <p class="text-sm text-slate-400 font-light max-w-md">
+        Selecciona las especialidades que requiere tu iniciativa y obtén una estimación inmediata en tiempo real impulsada por GSAP.
+      </p>
+    </div>
+
+    <!-- Calculator Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left Summary Column -->
+      <div class="lg:col-span-5 glass-panel p-8 sm:p-12 rounded-3xl space-y-8 sticky top-28 border border-white/15">
+        <div class="space-y-3">
+          <span class="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-[#d4af37]/15 text-[#d4af37] border border-[#d4af37]/30 inline-block">
+            Estimación en Tiempo Real
+          </span>
+          <h3 class="font-display font-bold text-2xl sm:text-3xl text-white">
+            Configuración del Proyecto
+          </h3>
+          <p class="text-sm text-slate-400 font-light leading-relaxed">
+            Incluye de base: Diseño personalizado, arquitectura responsive, optimización SEO extrema y gestión de proyecto ágil.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
+          <span class="text-xs font-mono uppercase tracking-widest text-slate-400 block">Inversión Estimada (USD)</span>
+          <div class="flex items-baseline gap-2">
+            <span class="text-2xl font-display font-light text-[#d4af37]">$</span>
+            <span id="displayed-price" class="text-5xl sm:text-6xl font-display font-extrabold text-white tracking-tight">
+              {PRICING_BASE}
+            </span>
+            <span class="text-xs font-mono text-slate-500 uppercase ml-2">/ Proyecto Base</span>
+          </div>
+        </div>
+
+        <div class="space-y-4 pt-2">
+          <a
+            href="#contacto"
+            id="cta-price-btn"
+            class="button-primary w-full text-center group"
+          >
+            <span>Solicitar Propuesta Ahora</span>
+            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          <p class="text-[11px] text-center text-slate-500 font-light">
+            * Sin costos mensuales ocultos. Código y documentación 100% de tu propiedad.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Options Column -->
+      <div class="lg:col-span-7 space-y-5">
+        
+        <!-- Base Package Box -->
+        <div class="glass-panel p-6 sm:p-8 rounded-2xl border-l-4 border-l-[#d4af37] flex items-center justify-between gap-6">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
+              <h4 class="font-display font-bold text-lg text-white">Paquete Base de Innovación UCSP</h4>
+            </div>
+            <p class="text-xs text-slate-400 font-light">Estructura arquitectónica high-end, accesibilidad, hosting estático y soporte inicial.</p>
+          </div>
+          <span class="font-mono font-bold text-base text-[#d4af37] whitespace-nowrap">+ ${PRICING_BASE}</span>
+        </div>
+
+        <!-- Interactive Switch Options -->
+        <div class="space-y-4 pt-2">
+          {PRICING_OPTIONS.map((option) => (
+            <label
+              for={option.id}
+              class="pricing-option-card glass-panel glass-panel-hover p-6 sm:p-8 rounded-2xl flex items-center justify-between gap-6 cursor-pointer border border-white/10 select-none group"
+            >
+              <div class="space-y-1.5 max-w-lg">
+                <div class="flex items-center gap-3">
+                  <h4 class="font-display font-bold text-lg sm:text-xl text-white group-hover:text-[#f3e5ab] transition-colors">
+                    {option.name}
+                  </h4>
+                  <span class="px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold bg-white/5 text-[#d4af37]">
+                    + ${option.price}
+                  </span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-400 font-light leading-relaxed">
+                  {option.description}
+                </p>
+              </div>
+
+              <!-- Switch Checkbox -->
+              <div class="relative flex items-center">
+                <input
+                  type="checkbox"
+                  id={option.id}
+                  value={option.price}
+                  class="pricing-checkbox sr-only"
+                />
+                <div class="switch-bg w-14 h-8 bg-white/10 rounded-full transition-colors duration-300 border border-white/20 p-1 flex items-center">
+                  <div class="switch-knob w-6 h-6 bg-slate-400 rounded-full transition-transform duration-300 transform translate-x-0 shadow-md"></div>
+                </div>
+              </div>
+            </label>
+          ))}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Custom Switch Active State */
+  .pricing-checkbox:checked + .switch-bg {
+    background-color: #d4af37;
+    border-color: #f3e5ab;
+  }
+  .pricing-checkbox:checked + .switch-bg .switch-knob {
+    transform: translateX(24px);
+    background-color: #0a0a0e;
+  }
+  .pricing-checkbox:checked ~ .pricing-option-card {
+    border-color: rgba(212, 175, 55, 0.5);
+    background: rgba(36, 28, 36, 0.95);
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+
+  const basePrice = 1290;
+  let currentTotal = basePrice;
+  const priceObj = { val: basePrice };
+  const priceDisplay = document.getElementById('displayed-price');
+  const checkboxes = document.querySelectorAll('.pricing-checkbox');
+
+  function updatePrice() {
+    let extra = 0;
+    checkboxes.forEach((cb) => {
+      if ((cb as HTMLInputElement).checked) {
+        extra += Number((cb as HTMLInputElement).value);
+      }
+    });
+
+    const newTotal = basePrice + extra;
+    
+    gsap.to(priceObj, {
+      val: newTotal,
+      duration: 0.6,
+      ease: 'power3.out',
+      onUpdate: () => {
+        if (priceDisplay) {
+          priceDisplay.textContent = Math.round(priceObj.val).toLocaleString('en-US');
+        }
+      }
+    });
+  }
+
+  checkboxes.forEach((cb) => {
+    cb.addEventListener('change', updatePrice);
+  });
+</script>

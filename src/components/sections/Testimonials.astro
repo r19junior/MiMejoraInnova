@@ -1,0 +1,98 @@
+---
+import { INNOVA_INFO } from '../../data/portfolioData';
+---
+
+<section id="mision-vision" class="relative py-32 px-6 sm:px-12 max-w-7xl mx-auto overflow-hidden">
+  
+  <!-- Subtle ambient glow -->
+  <div class="absolute top-1/2 left-0 w-96 h-96 bg-[#8a1c14]/10 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-[#d4af37]/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="space-y-20 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-l-2 border-[#d4af37] pl-6">
+      <div class="space-y-3">
+        <span class="text-xs uppercase tracking-widest text-[#d4af37] font-mono font-semibold">01. Filosofía & Propósito</span>
+        <h2 class="section-title font-display text-white">
+          Misión & <span class="font-serif italic font-normal text-gradient-gold">Visión Institucional</span>
+        </h2>
+      </div>
+      <p class="text-sm text-slate-400 font-light max-w-md">
+        Nuestros pilares rectores para impulsar el liderazgo y el desarrollo tecnológico en la Universidad Católica San Pablo (UCSP).
+      </p>
+    </div>
+
+    <!-- Editorial Quotes Grid (Misión & Visión) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+      
+      <!-- Misión Card -->
+      <div class="glass-panel glass-panel-hover p-10 sm:p-14 rounded-3xl relative overflow-hidden flex flex-col justify-between space-y-8 border-t-4 border-t-[#8a1c14] group">
+        <div class="space-y-6">
+          <div class="flex items-center justify-between">
+            <span class="px-4 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-[#8a1c14]/20 text-rose-300 border border-[#8a1c14]/40">
+              Nuestra Misión
+            </span>
+            <span class="text-4xl font-serif text-white/20 select-none">“</span>
+          </div>
+          
+          <h3 class="font-display font-semibold text-2xl sm:text-3xl text-white group-hover:text-rose-200 transition-colors leading-snug">
+            Cultura Sólida de Gestión de Proyectos en la UCSP
+          </h3>
+
+          <p class="text-base sm:text-lg text-slate-300 font-light leading-relaxed">
+            "{INNOVA_INFO.mission}"
+          </p>
+        </div>
+
+        <div class="pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+          <span>Excelencia Académica & Autonomía</span>
+          <span class="text-[#d4af37]">✦ Innova UCSP</span>
+        </div>
+      </div>
+
+      <!-- Visión Card -->
+      <div class="glass-panel glass-panel-hover p-10 sm:p-14 rounded-3xl relative overflow-hidden flex flex-col justify-between space-y-8 border-t-4 border-t-[#d4af37] group">
+        <div class="space-y-6">
+          <div class="flex items-center justify-between">
+            <span class="px-4 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-[#d4af37]/20 text-[#f3e5ab] border border-[#d4af37]/40">
+              Nuestra Visión
+            </span>
+            <span class="text-4xl font-serif text-white/20 select-none">“</span>
+          </div>
+
+          <h3 class="font-display font-semibold text-2xl sm:text-3xl text-white group-hover:text-[#f3e5ab] transition-colors leading-snug">
+            Comunidad Referente en Soluciones Innovadoras
+          </h3>
+
+          <p class="text-base sm:text-lg text-slate-300 font-light leading-relaxed">
+            "{INNOVA_INFO.vision}"
+          </p>
+        </div>
+
+        <div class="pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+          <span>Cooperación Interdisciplinaria & Sostenibilidad</span>
+          <span class="text-[#d4af37]">✦ Innova UCSP</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Editorial Endorsement Banner -->
+    <div class="glass-panel p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 border-l border-r border-[#d4af37]/30">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-[#d4af37]/10 flex items-center justify-center text-[#d4af37] text-xl font-bold font-serif">
+          ★
+        </div>
+        <div>
+          <h4 class="font-display font-bold text-white text-lg">Comunidad Estudiantil de Alto Impacto</h4>
+          <p class="text-xs text-slate-400 font-light">Especializados en metodologías PMO, desarrollo web TI e integración interinstitucional.</p>
+        </div>
+      </div>
+      <a href="#areas" class="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest bg-white/10 hover:bg-[#d4af37] text-white hover:text-[#0a0a0e] transition-all duration-300 whitespace-nowrap">
+        Conoce Nuestras 6 Áreas
+      </a>
+    </div>
+
+  </div>
+</section>

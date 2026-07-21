@@ -1,0 +1,67 @@
+---
+import { INNOVA_INFO } from '../../data/portfolioData';
+import HeroScene from '../three/HeroScene.astro';
+---
+
+<section id="inicio" class="relative min-h-[100svh] overflow-hidden flex items-center justify-center pt-28 pb-16 px-6 sm:px-12">
+  
+  <!-- Three.js Abstract 3D Geometric Background -->
+  <HeroScene />
+
+  <div class="relative z-10 max-w-6xl mx-auto text-center flex flex-col items-center space-y-10">
+    
+    <!-- Kicker / Top Label -->
+    <div class="hero-kicker-anim opacity-0 transform translate-y-6">
+      <span class="hero-kicker px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-slate-300 backdrop-blur-md">
+        {INNOVA_INFO.kicker}
+      </span>
+    </div>
+
+    <!-- Massive Editorial Headline -->
+    <h1 class="hero-title font-display text-white max-w-5xl tracking-tight hero-title-anim opacity-0 transform translate-y-10">
+      <span class="block">TU VISIÓN DIGITAL</span>
+      <span class="block font-serif italic font-normal text-gradient-gold">PUEDE IR MÁS ALLÁ</span>
+    </h1>
+
+    <!-- Descriptive Text -->
+    <p class="hero-description text-slate-300 font-light max-w-2xl hero-desc-anim opacity-0 transform translate-y-6">
+      {INNOVA_INFO.heroDescription}
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-wrap items-center justify-center gap-5 pt-4 hero-btn-anim opacity-0 transform translate-y-6">
+      <a href="#areas" class="button-primary group">
+        <span>Explorar Áreas & Proyectos</span>
+        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+      
+      <a href="#mision-vision" class="px-7 py-3.5 rounded-xl font-semibold text-xs uppercase tracking-widest text-slate-300 hover:text-white border border-white/15 hover:border-[#d4af37] glass-panel transition-all duration-300">
+        Nuestra Filosofía
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Bottom Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+    <span class="text-[10px] uppercase tracking-widest font-mono text-slate-400">Desplaza para explorar</span>
+    <div class="w-5 h-8 rounded-full border-2 border-white/30 flex justify-center pt-1.5">
+      <div class="w-1 h-2 rounded-full bg-[#d4af37] animate-bounce"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+    tl.to('.hero-kicker-anim', { opacity: 1, y: 0, duration: 0.9, delay: 0.2 })
+      .to('.hero-title-anim', { opacity: 1, y: 0, duration: 1.1 }, '-=0.6')
+      .to('.hero-desc-anim', { opacity: 1, y: 0, duration: 0.9 }, '-=0.7')
+      .to('.hero-btn-anim', { opacity: 1, y: 0, duration: 0.8 }, '-=0.6');
+  });
+</script>

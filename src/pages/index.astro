@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CustomCursor from '../components/CustomCursor.astro';
+import Hero from '../components/sections/Hero.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import Projects from '../components/sections/Projects.astro';
+import Directiva from '../components/sections/Directiva.astro';
+import ConceptsGallery from '../components/sections/ConceptsGallery.astro';
+import About from '../components/sections/About.astro';
+import ServicesProcess from '../components/sections/ServicesProcess.astro';
+import PricingCalculator from '../components/sections/PricingCalculator.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import Contact from '../components/sections/Contact.astro';
+import { INNOVA_INFO } from '../data/portfolioData';
+---
+
+<Layout
+  title="Cedipro Innova UCSP — Portfolio Interactivo Long-Scroll & Gestión Tecnológica"
+  description={INNOVA_INFO.heroDescription}
+>
+  <CustomCursor />
+
+  <!-- Long-Scroll Cinematic Sections Container -->
+  <main class="relative z-10 overflow-hidden space-y-12 sm:space-y-24">
+    <Hero />
+    <Testimonials />
+    <Projects />
+    <Directiva />
+    <ConceptsGallery />
+    <About />
+    <ServicesProcess />
+    <PricingCalculator />
+    <FAQ />
+    <Contact />
+  </main>
+</Layout>

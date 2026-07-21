@@ -1,0 +1,79 @@
+---
+import { SKILL_CATEGORIES } from '../../data/portfolioData';
+---
+
+<section id="habilidades" class="relative py-32 px-6 lg:px-8 max-w-6xl mx-auto">
+  
+  <div class="space-y-16 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="space-y-3 border-l-2 border-[#d4af37] pl-6">
+      <span class="text-xs uppercase tracking-widest text-[#d4af37] font-semibold">04. Dominio Técnico & Estratégico</span>
+      <h2 class="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight">
+        Matriz de <span class="font-serif italic font-normal text-gradient-gold">Competencias</span>
+      </h2>
+      <p class="text-sm text-slate-400 font-light max-w-xl">
+        Equilibrio estructurado entre metodologías de dirección ágil de proyectos (PMO) y herramientas avanzadas de desarrollo de software.
+      </p>
+    </div>
+
+    <!-- Categories Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+      {SKILL_CATEGORIES.map((cat, idx) => (
+        <div class="glass-panel glass-panel-hover p-8 rounded-3xl space-y-6 flex flex-col justify-between h-full border border-white/10 group">
+          
+          <div class="space-y-3 border-b border-white/10 pb-4">
+            <div class="flex items-center justify-between">
+              <span class="w-8 h-8 rounded-xl bg-[#d4af37]/10 flex items-center justify-center text-[#d4af37] font-mono text-xs font-bold">
+                0{idx + 1}
+              </span>
+              <span class="text-[10px] uppercase tracking-widest text-slate-500 font-mono">Especialidad</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white group-hover:text-[#d4af37] transition-colors">
+              {cat.title}
+            </h3>
+            <p class="text-xs text-slate-400 font-light leading-relaxed">
+              {cat.description}
+            </p>
+          </div>
+
+          <!-- Skills list with progress bars -->
+          <div class="space-y-5 pt-2">
+            {cat.skills.map(skill => (
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between text-xs font-medium">
+                  <span class="text-slate-200">{skill.name}</span>
+                  <span class="font-mono text-[#d4af37]">{skill.level}%</span>
+                </div>
+                <div class="w-full h-1.5 rounded-full bg-white/5 overflow-hidden">
+                  <div
+                    class="h-full bg-gradient-to-r from-[#d4af37] to-[#f3e5ab] rounded-full transition-all duration-1000 ease-out"
+                    style={`width: ${skill.level}%`}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom summary banner -->
+    <div class="glass-panel p-8 rounded-3xl border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div class="space-y-1">
+        <h4 class="font-display font-bold text-lg text-white">¿Buscas una competencia o stack particular?</h4>
+        <p class="text-xs text-slate-400 font-light">
+          Adaptabilidad continua a nuevas arquitecturas e integración con ecosistemas corporativos o universitarios.
+        </p>
+      </div>
+      <a
+        href="#contacto"
+        class="px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/10 hover:bg-[#d4af37] text-white hover:text-[#0a0a0c] transition-all duration-300 whitespace-nowrap"
+      >
+        Consultar Stack Completo
+      </a>
+    </div>
+
+  </div>
+</section>

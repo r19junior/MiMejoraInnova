@@ -1,0 +1,176 @@
+---
+import { INNOVA_INFO } from '../data/portfolioData';
+
+const navLinks = [
+  { name: 'Inicio', href: '#inicio' },
+  { name: 'Filosofía', href: '#mision-vision' },
+  { name: 'Áreas', href: '#areas' },
+  { name: 'Directiva', href: '#directiva' },
+  { name: 'Proyectos', href: '#proyectos' },
+  { name: 'Proceso', href: '#metodologia' },
+  { name: 'Inversión', href: '#servicios-calculadora' },
+  { name: 'FAQ', href: '#faq' },
+  { name: 'Contacto', href: '#contacto' }
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 px-4 sm:px-8" id="main-header">
+  <div class="max-w-7xl mx-auto glass-panel rounded-full px-6 py-3.5 flex items-center justify-between shadow-2xl border border-white/10 transition-all duration-300">
+    
+    <!-- Brand Monogram & Logo -->
+    <a href="#inicio" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#d4af37] via-[#f87171] to-[#8a1c14] p-[2px] shadow-lg group-hover:scale-105 transition-transform duration-300">
+        <div class="w-full h-full bg-[#0a0a0e] rounded-full flex items-center justify-center">
+          <span class="font-display font-bold text-sm tracking-tighter text-gradient-gold">I·U</span>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-display font-bold text-base tracking-tight text-white group-hover:text-[#d4af37] transition-colors">
+          Cedipro <span class="font-light text-slate-300 font-serif italic">Innova</span>
+        </span>
+        <span class="text-[10px] tracking-widest text-slate-400 uppercase font-mono">UCSP Arequipa</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden xl:flex items-center gap-1">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="nav-link px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-200 relative"
+          data-section={link.href.replace('#', '')}
+        >
+          {link.name}
+          <span class="nav-indicator absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#d4af37] opacity-0 transition-opacity duration-300 shadow-sm shadow-[#d4af37]"></span>
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right Controls: Language & CTA -->
+    <div class="flex items-center gap-4">
+      <div class="hidden md:flex items-center text-xs font-mono text-slate-400 tracking-wider">
+        <span class="text-white font-bold">ES</span>
+        <span class="mx-1.5 opacity-40">/</span>
+        <span class="hover:text-white transition-colors cursor-pointer">EN</span>
+      </div>
+
+      <a
+        href="#contacto"
+        class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#f8f6f8] text-[#110d10] hover:bg-[#d4af37] hover:text-white shadow-lg transition-all duration-300"
+      >
+        <span>Conectar</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        id="mobile-menu-btn"
+        class="xl:hidden p-2 text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50"
+        aria-label="Abrir menú de navegación"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="burger-icon">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="close-icon">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div
+    id="mobile-menu"
+    class="xl:hidden max-w-7xl mx-auto mt-3 glass-panel rounded-2xl p-5 shadow-2xl border border-white/10 hidden transform origin-top transition-all duration-300"
+  >
+    <nav class="grid grid-cols-2 gap-2">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-nav-link px-4 py-3 rounded-xl text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition-colors flex items-center justify-between"
+          data-section={link.href.replace('#', '')}
+        >
+          <span>{link.name}</span>
+          <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      ))}
+      <div class="col-span-2 pt-3 mt-2 border-t border-white/10">
+        <a
+          href="#contacto"
+          class="w-full py-3.5 rounded-xl text-center text-xs font-bold uppercase tracking-widest bg-[#f8f6f8] text-[#110d10] block shadow-lg"
+        >
+          Iniciar Contacto
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const burgerIcon = document.getElementById('burger-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    const isHidden = mobileMenu?.classList.contains('hidden');
+    if (isHidden) {
+      mobileMenu?.classList.remove('hidden');
+      burgerIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+    } else {
+      mobileMenu?.classList.add('hidden');
+      burgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    }
+  });
+
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      burgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    });
+  });
+
+  const header = document.getElementById('main-header');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+      header?.classList.add('py-2');
+      header?.classList.remove('py-5');
+    } else {
+      header?.classList.add('py-5');
+      header?.classList.remove('py-2');
+    }
+
+    let current = '';
+    sections.forEach((section) => {
+      const sectionTop = (section as HTMLElement).offsetTop;
+      if (window.scrollY >= sectionTop - 250) {
+        current = section.getAttribute('id') || '';
+      }
+    });
+
+    navLinks.forEach((link) => {
+      const indicator = link.querySelector('.nav-indicator');
+      if (link.getAttribute('data-section') === current) {
+        link.classList.add('text-white', 'font-bold');
+        link.classList.remove('text-slate-300');
+        indicator?.classList.remove('opacity-0');
+      } else {
+        link.classList.remove('text-white', 'font-bold');
+        link.classList.add('text-slate-300');
+        indicator?.classList.add('opacity-0');
+      }
+    });
+  });
+</script>

@@ -1,0 +1,239 @@
+---
+import { INNOVA_INFO, REDES_SOCIALES } from '../../data/portfolioData';
+---
+
+<section id="contacto" class="relative py-32 px-6 sm:px-12 max-w-7xl mx-auto">
+  
+  <div class="space-y-24 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-l-2 border-[#d4af37] pl-6">
+      <div class="space-y-3">
+        <span class="text-xs uppercase tracking-widest text-[#d4af37] font-mono font-semibold">09. Conexión & Colaboración</span>
+        <h2 class="section-title font-display text-white">
+          Start a <span class="font-serif italic font-normal text-gradient-gold">Project</span>
+        </h2>
+      </div>
+      <p class="text-sm text-slate-400 font-light max-w-md">
+        ¿Tienes una iniciativa institucional, una consulta técnica de TI o buscas una alianza con Innova UCSP? Conversemos hoy.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      
+      <!-- Direct Contact Info Column -->
+      <div class="lg:col-span-5 space-y-10">
+        <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-8 border border-white/10">
+          <div class="space-y-3">
+            <span class="text-xs font-mono uppercase tracking-widest text-slate-500 block">Disponibilidad & Base</span>
+            <div class="flex items-center gap-2.5 text-sm text-emerald-400 font-medium">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Convocatorias y Alianzas Activas</span>
+            </div>
+          </div>
+
+          <div class="space-y-6 pt-6 border-t border-white/10">
+            <div>
+              <span class="block text-xs uppercase tracking-widest text-slate-500 font-semibold mb-1">Correo Institucional</span>
+              <a href={`mailto:${INNOVA_INFO.contactEmail}`} class="text-white hover:text-[#d4af37] transition-colors font-display font-medium text-xl">
+                {INNOVA_INFO.contactEmail}
+              </a>
+            </div>
+
+            <div>
+              <span class="block text-xs uppercase tracking-widest text-slate-500 font-semibold mb-1">Ubicación</span>
+              <span class="text-slate-300 font-light text-base">{INNOVA_INFO.location}</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-white/10">
+            <p class="text-xs text-slate-400 font-light leading-relaxed">
+              Trabajamos desde el campus de la Universidad Católica San Pablo, conectando talento en Arequipa y el Perú.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Obermann Style Editorial Form -->
+      <div class="lg:col-span-7">
+        <div class="glass-panel p-8 sm:p-14 rounded-3xl relative overflow-hidden border border-white/10">
+          
+          <form id="contact-form" class="space-y-8" novalidate>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div class="space-y-2">
+                <label for="name" class="block text-xs font-mono uppercase tracking-widest text-slate-400">
+                  Nombre Completo <span class="text-[#d4af37]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Carlos Mendoza"
+                  class="form-field"
+                />
+                <span class="error-msg text-rose-400 text-xs hidden">Por favor ingresa tu nombre.</span>
+              </div>
+
+              <div class="space-y-2">
+                <label for="email" class="block text-xs font-mono uppercase tracking-widest text-slate-400">
+                  Correo Electrónico <span class="text-[#d4af37]">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="carlos@correo.com"
+                  class="form-field"
+                />
+                <span class="error-msg text-rose-400 text-xs hidden">Ingresa un correo electrónico válido.</span>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <label for="subject" class="block text-xs font-mono uppercase tracking-widest text-slate-400">
+                Área de Interés / Asunto
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="TI / PMO / Marketing / Logística / R.I"
+                class="form-field"
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label for="message" class="block text-xs font-mono uppercase tracking-widest text-slate-400">
+                Mensaje o Propuesta <span class="text-[#d4af37]">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="3"
+                required
+                placeholder="Cuéntanos los objetivos o alcances de tu proyecto..."
+                class="form-field resize-none"
+              ></textarea>
+              <span class="error-msg text-rose-400 text-xs hidden">Escribe tu consulta o mensaje.</span>
+            </div>
+
+            <div class="pt-4">
+              <button
+                type="submit"
+                id="submit-btn"
+                class="button-primary w-full sm:w-auto group"
+              >
+                <span>Enviar Propuesta</span>
+                <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <!-- Success Feedback Card -->
+          <div id="success-feedback" class="absolute inset-0 bg-[#0a0a0e]/95 backdrop-blur-xl rounded-3xl p-10 flex flex-col items-center justify-center text-center space-y-5 hidden transition-opacity duration-500 z-30">
+            <div class="w-16 h-16 rounded-full bg-[#d4af37]/15 text-[#d4af37] flex items-center justify-center border border-[#d4af37]/40">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-3xl text-white">¡Mensaje Recibido con Éxito!</h3>
+            <p class="text-base text-slate-300 max-w-md font-light leading-relaxed">
+              Tu mensaje ha sido derivado al equipo de dirección de Innova UCSP. Nos comunicaremos contigo en un plazo máximo de 24 horas.
+            </p>
+            <button
+              type="button"
+              id="reset-form-btn"
+              class="mt-4 px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest bg-white/10 text-white hover:bg-[#d4af37] hover:text-[#0a0a0e] transition-all"
+            >
+              Enviar otra consulta
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Nuestras Redes Box (From reference HTML #contenedor_Red) -->
+    <div id="contenedor_Red" class="pt-16 border-t border-white/10 space-y-10">
+      <div class="text-center">
+        <h3 class="font-display font-bold text-2xl sm:text-4xl text-white tracking-tight uppercase">Nuestras Redes</h3>
+        <p class="text-xs text-slate-400 font-light mt-1">Conecta con nuestra comunidad en los principales canales digitales</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        {REDES_SOCIALES.map((red) => (
+          <a
+            href={red.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-panel glass-panel-hover p-6 rounded-3xl flex flex-col items-center justify-center space-y-4 text-center group border border-white/10 hover:border-[#d4af37]/50"
+          >
+            <div class="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center p-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
+              <img
+                src={red.iconImage}
+                alt={red.platform}
+                class="w-full h-full object-contain filter drop-shadow"
+                loading="lazy"
+              />
+            </div>
+            <span class="font-display font-bold text-base text-white group-hover:text-[#d4af37] transition-colors">
+              {red.platform}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successFeedback = document.getElementById('success-feedback');
+  const resetBtn = document.getElementById('reset-form-btn');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    let isValid = true;
+    const nameInput = form.querySelector('#name') as HTMLInputElement;
+    const emailInput = form.querySelector('#email') as HTMLInputElement;
+    const msgInput = form.querySelector('#message') as HTMLTextAreaElement;
+
+    const inputs = [nameInput, emailInput, msgInput];
+    inputs.forEach(input => {
+      const errorSpan = input.parentElement?.querySelector('.error-msg');
+      if (!input.value.trim() || (input.type === 'email' && !input.value.includes('@'))) {
+        isValid = false;
+        errorSpan?.classList.remove('hidden');
+        input.classList.add('border-rose-500');
+      } else {
+        errorSpan?.classList.add('hidden');
+        input.classList.remove('border-rose-500');
+      }
+    });
+
+    if (isValid) {
+      const submitBtn = form.querySelector('#submit-btn') as HTMLButtonElement;
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span>Enviando...</span>';
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        successFeedback?.classList.remove('hidden');
+        form.reset();
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }, 700);
+    }
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    successFeedback?.classList.add('hidden');
+  });
+</script>

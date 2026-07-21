@@ -1,0 +1,31 @@
+---
+---
+
+<div id="custom-cursor-dot" class="fixed top-0 left-0 w-2.5 h-2.5 bg-[#d4af37] rounded-full pointer-events-none z-[9999] transition-transform duration-75 ease-out hidden md:block transform -translate-x-1/2 -translate-y-1/2"></div>
+<div id="custom-cursor-ring" class="fixed top-0 left-0 w-10 h-10 border border-white/30 rounded-full pointer-events-none z-[9998] transition-all duration-300 ease-out hidden md:block transform -translate-x-1/2 -translate-y-1/2"></div>
+
+<script>
+  const dot = document.getElementById('custom-cursor-dot');
+  const ring = document.getElementById('custom-cursor-ring');
+
+  if (dot && ring) {
+    window.addEventListener('mousemove', (e) => {
+      dot.style.left = `${e.clientX}px`;
+      dot.style.top = `${e.clientY}px`;
+      ring.style.left = `${e.clientX}px`;
+      ring.style.top = `${e.clientY}px`;
+    });
+
+    const interactiveElements = document.querySelectorAll('a, button, input, textarea, .glass-panel-hover');
+    interactiveElements.forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        ring.classList.add('scale-150', 'bg-white/10', 'border-[#d4af37]');
+        dot.classList.add('scale-50');
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.classList.remove('scale-150', 'bg-white/10', 'border-[#d4af37]');
+        dot.classList.remove('scale-50');
+      });
+    });
+  }
+</script>

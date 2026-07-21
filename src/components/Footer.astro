@@ -1,0 +1,131 @@
+---
+import { INNOVA_INFO, REDES_SOCIALES } from '../data/portfolioData';
+---
+
+<footer class="relative mt-32 border-t border-white/10 bg-[#0a0a0e] pt-20 pb-16 overflow-hidden">
+  
+  <!-- Subtle ambient glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-gradient-to-b from-[#8a1c14]/15 via-[#d4af37]/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 sm:px-12 relative z-10 space-y-16">
+    
+    <!-- Massive Pre-Footer CTA Banner (Obermann Style) -->
+    <div class="glass-panel p-10 sm:p-16 rounded-3xl text-center space-y-8 border border-white/15 relative overflow-hidden group">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#8a1c14]/20 via-transparent to-[#d4af37]/15 opacity-50 group-hover:opacity-80 transition-opacity pointer-events-none"></div>
+      
+      <div class="space-y-4 relative z-10 max-w-3xl mx-auto">
+        <span class="px-4 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-white/10 text-[#d4af37] border border-white/15">
+          Siguiente Hito Institucional
+        </span>
+        <h3 class="font-display font-extrabold text-3xl sm:text-6xl text-white tracking-tight leading-tight">
+          Ready for the <span class="font-serif italic font-normal text-gradient-gold">next step?</span>
+        </h3>
+        <p class="text-base sm:text-lg text-slate-300 font-light max-w-xl mx-auto">
+          ¿Listo para impulsar un nuevo proyecto, potenciar el talento de tu área o sumarte a la comunidad técnica líder en la UCSP?
+        </p>
+      </div>
+
+      <div class="relative z-10 flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a href="#contacto" class="button-primary group/btn">
+          <span>Iniciar Conversación</span>
+          <svg class="w-4 h-4 ml-2 transform group-hover/btn:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+        <a href="#areas" class="px-7 py-3.5 rounded-xl font-semibold text-xs uppercase tracking-widest text-slate-300 hover:text-white border border-white/15 hover:border-[#d4af37] transition-colors">
+          Explorar las 6 Áreas
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Footer Columns -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10">
+      
+      <!-- Brand & Description -->
+      <div class="md:col-span-5 space-y-5">
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#d4af37] via-[#f87171] to-[#8a1c14] p-[2px] shadow-lg">
+            <div class="w-full h-full bg-[#0a0a0e] rounded-full flex items-center justify-center">
+              <span class="font-display font-bold text-sm tracking-tighter text-gradient-gold">I·U</span>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-bold text-lg tracking-tight text-white group-hover:text-[#d4af37] transition-colors">
+              Cedipro <span class="font-light text-slate-300 font-serif italic">Innova</span>
+            </span>
+            <span class="text-[10px] tracking-widest text-slate-400 uppercase font-mono">UCSP Arequipa</span>
+          </div>
+        </a>
+
+        <p class="text-sm text-slate-400 leading-relaxed max-w-md font-light">
+          {INNOVA_INFO.heroDescription}
+        </p>
+
+        <div class="pt-2 flex items-center gap-3">
+          {REDES_SOCIALES.map((red) => (
+            <a
+              href={red.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-slate-400 hover:text-[#d4af37] hover:border-[#d4af37]/50 transition-all duration-300"
+              aria-label={red.platform}
+            >
+              <span class="text-xs font-mono font-bold">{red.platform.slice(0, 2).toUpperCase()}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="md:col-span-4 space-y-4">
+        <h4 class="font-display font-semibold text-sm uppercase tracking-wider text-white flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#d4af37]"></span>
+          Mapa del Sitio
+        </h4>
+        <ul class="grid grid-cols-2 gap-2 text-sm text-slate-400 font-light">
+          <li><a href="#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+          <li><a href="#mision-vision" class="hover:text-white transition-colors">Filosofía</a></li>
+          <li><a href="#areas" class="hover:text-white transition-colors">6 Áreas</a></li>
+          <li><a href="#directiva" class="hover:text-white transition-colors">Directiva</a></li>
+          <li><a href="#proyectos" class="hover:text-white transition-colors">Proyectos</a></li>
+          <li><a href="#metodologia" class="hover:text-white transition-colors">Proceso 5P</a></li>
+          <li><a href="#servicios-calculadora" class="hover:text-white transition-colors">Calculadora</a></li>
+          <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="#contacto" class="hover:text-white transition-colors font-semibold text-[#d4af37]">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Location & Back to top -->
+      <div class="md:col-span-3 space-y-4 flex flex-col justify-between">
+        <div class="space-y-2">
+          <h4 class="font-display font-semibold text-sm uppercase tracking-wider text-white">Sede Central</h4>
+          <p class="text-sm text-slate-400 font-light leading-relaxed">
+            {INNOVA_INFO.location}
+          </p>
+          <p class="text-xs text-slate-500 italic">
+            Arequipa, Perú — Universidad Católica San Pablo.
+          </p>
+        </div>
+
+        <div class="pt-4">
+          <a
+            href="#inicio"
+            class="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#d4af37] hover:text-white transition-colors group"
+          >
+            <span>Volver al inicio ↑</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-mono gap-4">
+      <p>&copy; {new Date().getFullYear()} {INNOVA_INFO.name}. Todos los derechos reservados.</p>
+      <p class="flex items-center gap-1.5">
+        Diseño Arquitectónico <span class="text-[#d4af37]">✦</span> Inspirado en el Sistema Visual <span class="text-slate-300">Leon Obermann</span>
+      </p>
+    </div>
+
+  </div>
+</footer>

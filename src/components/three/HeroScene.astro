@@ -1,0 +1,136 @@
+---
+---
+
+<div id="three-hero-container" class="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-90"></div>
+
+<script>
+  import * as THREE from 'three';
+
+  const container = document.getElementById('three-hero-container');
+
+  if (container) {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 6.5;
+
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    // Lights for Gold, Silver & Crimson metallic reflections
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
+    const goldLight = new THREE.DirectionalLight(0xd4af37, 3.5);
+    goldLight.position.set(5, 5, 4);
+    scene.add(goldLight);
+
+    const crimsonLight = new THREE.DirectionalLight(0x8a1c14, 4.0);
+    crimsonLight.position.set(-5, -3, 3);
+    scene.add(crimsonLight);
+
+    const silverLight = new THREE.PointLight(0xe2e8f0, 2.5, 15);
+    silverLight.position.set(0, 4, -2);
+    scene.add(silverLight);
+
+    // Abstract Geometric Group (Obermann Style 3D crystalline structure)
+    const group = new THREE.Group();
+    scene.add(group);
+
+    // Main physical material with dark crimson/gold transmission
+    const mainMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0x1a0e14,
+      emissive: 0x0a0407,
+      transparent: true,
+      opacity: 0.32,
+      roughness: 0.28,
+      metalness: 0.45,
+      transmission: 0.35,
+      clearcoat: 0.8,
+      clearcoatRoughness: 0.15,
+      side: THREE.DoubleSide,
+      wireframe: false
+    });
+
+    const wireframeMaterial = new THREE.MeshBasicMaterial({
+      color: 0xd4af37,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.15
+    });
+
+    // Outer Icosahedron
+    const geo1 = new THREE.IcosahedronGeometry(2.2, 1);
+    const mesh1 = new THREE.Mesh(geo1, mainMaterial);
+    const wire1 = new THREE.Mesh(geo1, wireframeMaterial);
+    group.add(mesh1);
+    group.add(wire1);
+
+    // Inner geometric nucleus (Silver/Crimson tinted)
+    const innerMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0x8a1c14,
+      transparent: true,
+      opacity: 0.4,
+      roughness: 0.1,
+      metalness: 0.6
+    });
+    const geo2 = new THREE.OctahedronGeometry(1.2, 0);
+    const mesh2 = new THREE.Mesh(geo2, innerMaterial);
+    mesh2.rotation.set(0.5, 0.5, 0);
+    group.add(mesh2);
+
+    // Floating outer crystalline shards
+    const shardGeo = new THREE.TetrahedronGeometry(0.4, 0);
+    const shardPositions = [
+      [-3.0, 1.8, -1.0],
+      [3.2, -1.5, 0.5],
+      [1.8, 2.6, 1.2],
+      [-2.2, -2.4, -0.8]
+    ];
+    shardPositions.forEach((pos, idx) => {
+      const shard = new THREE.Mesh(shardGeo, idx % 2 === 0 ? mainMaterial : wireframeMaterial);
+      shard.position.set(pos[0], pos[1], pos[2]);
+      group.add(shard);
+    });
+
+    // Mouse interactive tilt
+    let mouseX = 0;
+    let mouseY = 0;
+    const windowHalfX = window.innerWidth / 2;
+    const windowHalfY = window.innerHeight / 2;
+
+    window.addEventListener('mousemove', (event) => {
+      mouseX = (event.clientX - windowHalfX) * 0.0008;
+      mouseY = (event.clientY - windowHalfY) * 0.0008;
+    });
+
+    // Resize handling
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Animation Loop
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const elapsed = clock.getElapsedTime();
+
+      group.rotation.x += 0.0015;
+      group.rotation.y += 0.0025;
+
+      // Subtle pulse and mouse reaction
+      group.position.y = Math.sin(elapsed * 0.8) * 0.15;
+      group.rotation.x += (mouseY - group.rotation.x) * 0.05;
+      group.rotation.y += (mouseX - group.rotation.y) * 0.05;
+
+      mesh2.rotation.y -= 0.008;
+      mesh2.rotation.z += 0.005;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+</script>
