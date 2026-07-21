@@ -1,7 +1,7 @@
 ---
 ---
 
-<div id="three-hero-container" class="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-90"></div>
+<div id="three-hero-container" class="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-95"></div>
 
 <script>
   import * as THREE from 'three';
@@ -18,19 +18,23 @@
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Lights for Gold, Silver & Crimson metallic reflections
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    // Lights adapted to Innova UCSP Palette: #254166 (Azul principal), #63242F (Granate), #C5A059 (Dorado elegante)
+    const ambientLight = new THREE.AmbientLight(0xF8F6F1, 0.85);
     scene.add(ambientLight);
 
-    const goldLight = new THREE.DirectionalLight(0xd4af37, 3.5);
+    const goldLight = new THREE.DirectionalLight(0xC5A059, 3.8);
     goldLight.position.set(5, 5, 4);
     scene.add(goldLight);
 
-    const crimsonLight = new THREE.DirectionalLight(0x8a1c14, 4.0);
-    crimsonLight.position.set(-5, -3, 3);
-    scene.add(crimsonLight);
+    const navyLight = new THREE.DirectionalLight(0x254166, 4.5);
+    navyLight.position.set(-5, 3, 4);
+    scene.add(navyLight);
 
-    const silverLight = new THREE.PointLight(0xe2e8f0, 2.5, 15);
+    const burgundyLight = new THREE.DirectionalLight(0x63242F, 4.2);
+    burgundyLight.position.set(-4, -4, 3);
+    scene.add(burgundyLight);
+
+    const silverLight = new THREE.PointLight(0xA7ADB5, 2.5, 15);
     silverLight.position.set(0, 4, -2);
     scene.add(silverLight);
 
@@ -38,26 +42,26 @@
     const group = new THREE.Group();
     scene.add(group);
 
-    // Main physical material with dark crimson/gold transmission
+    // Main physical material: deep blue-black (#101820) with navy/gold transmission
     const mainMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0x1a0e14,
-      emissive: 0x0a0407,
+      color: 0x101820,
+      emissive: 0x0c1218,
       transparent: true,
-      opacity: 0.32,
-      roughness: 0.28,
-      metalness: 0.45,
-      transmission: 0.35,
-      clearcoat: 0.8,
+      opacity: 0.38,
+      roughness: 0.25,
+      metalness: 0.5,
+      transmission: 0.4,
+      clearcoat: 0.85,
       clearcoatRoughness: 0.15,
       side: THREE.DoubleSide,
       wireframe: false
     });
 
     const wireframeMaterial = new THREE.MeshBasicMaterial({
-      color: 0xd4af37,
+      color: 0xC5A059,
       wireframe: true,
       transparent: true,
-      opacity: 0.15
+      opacity: 0.18
     });
 
     // Outer Icosahedron
@@ -67,20 +71,20 @@
     group.add(mesh1);
     group.add(wire1);
 
-    // Inner geometric nucleus (Silver/Crimson tinted)
+    // Inner geometric nucleus (Burgundy #63242F / Gold #C5A059 tinted)
     const innerMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0x8a1c14,
+      color: 0x63242F,
       transparent: true,
-      opacity: 0.4,
-      roughness: 0.1,
-      metalness: 0.6
+      opacity: 0.45,
+      roughness: 0.12,
+      metalness: 0.65
     });
     const geo2 = new THREE.OctahedronGeometry(1.2, 0);
     const mesh2 = new THREE.Mesh(geo2, innerMaterial);
     mesh2.rotation.set(0.5, 0.5, 0);
     group.add(mesh2);
 
-    // Floating outer crystalline shards
+    // Floating outer crystalline shards (Sage / Sky / Sand accents)
     const shardGeo = new THREE.TetrahedronGeometry(0.4, 0);
     const shardPositions = [
       [-3.0, 1.8, -1.0],

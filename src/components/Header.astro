@@ -15,20 +15,20 @@ const navLinks = [
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 px-4 sm:px-8" id="main-header">
-  <div class="max-w-7xl mx-auto glass-panel rounded-full px-6 py-3.5 flex items-center justify-between shadow-2xl border border-white/10 transition-all duration-300">
+  <div class="max-w-7xl mx-auto glass-panel rounded-full px-6 py-3.5 flex items-center justify-between shadow-2xl border border-[#E5E7EB]/15 transition-all duration-300">
     
     <!-- Brand Monogram & Logo -->
     <a href="#inicio" class="flex items-center gap-3 group">
-      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#d4af37] via-[#f87171] to-[#8a1c14] p-[2px] shadow-lg group-hover:scale-105 transition-transform duration-300">
-        <div class="w-full h-full bg-[#0a0a0e] rounded-full flex items-center justify-center">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#C5A059] via-[#254166] to-[#63242F] p-[2px] shadow-lg group-hover:scale-105 transition-transform duration-300">
+        <div class="w-full h-full bg-[#101820] rounded-full flex items-center justify-center">
           <span class="font-display font-bold text-sm tracking-tighter text-gradient-gold">I·U</span>
         </div>
       </div>
       <div class="flex flex-col">
-        <span class="font-display font-bold text-base tracking-tight text-white group-hover:text-[#d4af37] transition-colors">
-          Cedipro <span class="font-light text-slate-300 font-serif italic">Innova</span>
+        <span class="font-display font-bold text-base tracking-tight text-[#F8F6F1] group-hover:text-[#C5A059] transition-colors">
+          Cedipro <span class="font-light text-[#E5E7EB] font-serif italic">Innova</span>
         </span>
-        <span class="text-[10px] tracking-widest text-slate-400 uppercase font-mono">UCSP Arequipa</span>
+        <span class="text-[10px] tracking-widest text-[#A7ADB5] uppercase font-mono">UCSP Arequipa</span>
       </div>
     </a>
 
@@ -37,26 +37,26 @@ const navLinks = [
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="nav-link px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-200 relative"
+          class="nav-link px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#E5E7EB] hover:text-[#F8F6F1] hover:bg-white/5 transition-all duration-200 relative"
           data-section={link.href.replace('#', '')}
         >
           {link.name}
-          <span class="nav-indicator absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#d4af37] opacity-0 transition-opacity duration-300 shadow-sm shadow-[#d4af37]"></span>
+          <span class="nav-indicator absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#C5A059] opacity-0 transition-opacity duration-300 shadow-sm shadow-[#C5A059]"></span>
         </a>
       ))}
     </nav>
 
     <!-- Right Controls: Language & CTA -->
     <div class="flex items-center gap-4">
-      <div class="hidden md:flex items-center text-xs font-mono text-slate-400 tracking-wider">
-        <span class="text-white font-bold">ES</span>
+      <div class="hidden md:flex items-center text-xs font-mono text-[#A7ADB5] tracking-wider">
+        <span class="text-[#F8F6F1] font-bold">ES</span>
         <span class="mx-1.5 opacity-40">/</span>
-        <span class="hover:text-white transition-colors cursor-pointer">EN</span>
+        <span class="hover:text-[#F8F6F1] transition-colors cursor-pointer">EN</span>
       </div>
 
       <a
         href="#contacto"
-        class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#f8f6f8] text-[#110d10] hover:bg-[#d4af37] hover:text-white shadow-lg transition-all duration-300"
+        class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#F8F6F1] text-[#101820] hover:bg-[#C5A059] hover:text-[#101820] shadow-lg transition-all duration-300"
       >
         <span>Conectar</span>
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -68,7 +68,7 @@ const navLinks = [
       <button
         type="button"
         id="mobile-menu-btn"
-        class="xl:hidden p-2 text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50"
+        class="xl:hidden p-2 text-[#E5E7EB] hover:text-[#F8F6F1] hover:bg-white/5 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#C5A059]/50"
         aria-label="Abrir menú de navegación"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="burger-icon">
@@ -84,25 +84,25 @@ const navLinks = [
   <!-- Mobile Dropdown Menu -->
   <div
     id="mobile-menu"
-    class="xl:hidden max-w-7xl mx-auto mt-3 glass-panel rounded-2xl p-5 shadow-2xl border border-white/10 hidden transform origin-top transition-all duration-300"
+    class="xl:hidden max-w-7xl mx-auto mt-3 glass-panel rounded-2xl p-5 shadow-2xl border border-[#E5E7EB]/15 hidden transform origin-top transition-all duration-300"
   >
     <nav class="grid grid-cols-2 gap-2">
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="mobile-nav-link px-4 py-3 rounded-xl text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition-colors flex items-center justify-between"
+          class="mobile-nav-link px-4 py-3 rounded-xl text-xs uppercase tracking-wider font-semibold text-[#E5E7EB] hover:text-[#F8F6F1] hover:bg-white/5 transition-colors flex items-center justify-between"
           data-section={link.href.replace('#', '')}
         >
           <span>{link.name}</span>
-          <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-[#A7ADB5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </a>
       ))}
-      <div class="col-span-2 pt-3 mt-2 border-t border-white/10">
+      <div class="col-span-2 pt-3 mt-2 border-t border-[#E5E7EB]/15">
         <a
           href="#contacto"
-          class="w-full py-3.5 rounded-xl text-center text-xs font-bold uppercase tracking-widest bg-[#f8f6f8] text-[#110d10] block shadow-lg"
+          class="w-full py-3.5 rounded-xl text-center text-xs font-bold uppercase tracking-widest bg-[#F8F6F1] text-[#101820] block shadow-lg"
         >
           Iniciar Contacto
         </a>
@@ -163,12 +163,12 @@ const navLinks = [
     navLinks.forEach((link) => {
       const indicator = link.querySelector('.nav-indicator');
       if (link.getAttribute('data-section') === current) {
-        link.classList.add('text-white', 'font-bold');
-        link.classList.remove('text-slate-300');
+        link.classList.add('text-[#F8F6F1]', 'font-bold');
+        link.classList.remove('text-[#E5E7EB]');
         indicator?.classList.remove('opacity-0');
       } else {
-        link.classList.remove('text-white', 'font-bold');
-        link.classList.add('text-slate-300');
+        link.classList.remove('text-[#F8F6F1]', 'font-bold');
+        link.classList.add('text-[#E5E7EB]');
         indicator?.classList.add('opacity-0');
       }
     });

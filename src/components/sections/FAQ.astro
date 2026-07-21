@@ -2,53 +2,53 @@
 import { FAQ_ITEMS } from '../../data/portfolioData';
 ---
 
-<section id="faq" class="relative py-32 px-6 sm:px-12 max-w-5xl mx-auto">
+<section id="faq" class="relative py-32 px-6 sm:px-12 max-w-5xl mx-auto overflow-hidden">
   
   <div class="space-y-16 relative z-10">
     
     <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-l-2 border-[#d4af37] pl-6">
-      <div class="space-y-3">
-        <span class="text-xs uppercase tracking-widest text-[#d4af37] font-mono font-semibold">08. Consultas Comunes</span>
-        <h2 class="section-title font-display text-white">
-          Preguntas <span class="font-serif italic font-normal text-gradient-gold">Frecuentes (FAQ)</span>
-        </h2>
-      </div>
-      <p class="text-sm text-slate-400 font-light max-w-md">
-        Todo lo que necesitas saber sobre nuestra organización, procesos de postulación a Innova UCSP y colaboraciones estratégicas.
+    <div class="text-center space-y-4 max-w-3xl mx-auto">
+      <span class="text-xs uppercase tracking-widest text-[#C5A059] font-mono font-semibold">08. Consultas & Claridad</span>
+      <h2 class="section-title font-display text-[#F8F6F1]">
+        Preguntas <span class="font-serif italic font-normal text-gradient-gold">Frecuentes</span>
+      </h2>
+      <p class="text-sm sm:text-base text-[#A7ADB5] font-light max-w-xl mx-auto">
+        Todo lo que necesitas saber sobre nuestra comunidad en la UCSP, la postulación y cómo colaboramos en proyectos interinstitucionales.
       </p>
     </div>
 
-    <!-- Accordion List (Obermann Style) -->
-    <div class="space-y-1 border-t border-white/15">
-      {FAQ_ITEMS.map((item, idx) => (
-        <div class="faq-item border-b border-white/15 overflow-hidden">
+    <!-- GSAP Animated Accordion List (Obermann Style) -->
+    <div class="space-y-4">
+      {FAQ_ITEMS.map((faq, idx) => (
+        <div class="faq-item glass-panel rounded-2xl border border-[#E5E7EB]/15 overflow-hidden transition-colors duration-300">
           
-          <!-- Question Trigger -->
           <button
             type="button"
-            class="faq-question w-full flex items-center justify-between py-7 text-left group focus:outline-none"
+            class="faq-trigger w-full p-6 sm:p-8 text-left flex items-center justify-between gap-6 focus:outline-none group"
             aria-expanded="false"
           >
-            <div class="flex items-center gap-6">
-              <span class="font-mono text-xs text-[#d4af37] opacity-60 group-hover:opacity-100 transition-opacity">
-                0{idx + 1}
-              </span>
-              <span class="font-display font-semibold text-lg sm:text-2xl text-white group-hover:text-[#f3e5ab] transition-colors pr-6">
-                {item.question}
+            <div class="flex items-center gap-4">
+              <span class="font-mono text-xs font-bold text-[#C5A059]">0{idx + 1}</span>
+              <span class="font-display font-semibold text-lg sm:text-xl text-[#F8F6F1] group-hover:text-[#D8C7A5] transition-colors">
+                {faq.question}
               </span>
             </div>
 
-            <!-- Plus/Cross Icon -->
-            <div class="faq-icon w-10 h-10 rounded-full glass-panel flex items-center justify-center text-white shrink-0 transition-transform duration-300">
-              <span class="text-xl font-light leading-none">+</span>
+            <!-- Plus / Minus Icon -->
+            <div class="faq-icon-wrap w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#A7ADB5] group-hover:text-[#F8F6F1] group-hover:bg-[#C5A059]/20 transition-all shrink-0">
+              <svg class="faq-icon-plus w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+              <svg class="faq-icon-minus w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+              </svg>
             </div>
           </button>
 
-          <!-- Answer Box (Animated by GSAP) -->
-          <div class="faq-answer h-0 opacity-0 overflow-hidden">
-            <div class="pb-8 pl-11 pr-6 text-slate-300 font-light text-base sm:text-lg leading-relaxed max-w-3xl">
-              {item.answer}
+          <!-- Collapsible Content -->
+          <div class="faq-content h-0 overflow-hidden opacity-0">
+            <div class="px-6 pb-8 sm:px-8 sm:pb-8 pt-2 border-t border-[#E5E7EB]/10 text-sm sm:text-base text-[#E5E7EB] font-light leading-relaxed">
+              {faq.answer}
             </div>
           </div>
 
@@ -56,18 +56,12 @@ import { FAQ_ITEMS } from '../../data/portfolioData';
       ))}
     </div>
 
-    <!-- Bottom FAQ Help Box -->
-    <div class="pt-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6 glass-panel p-8 rounded-3xl border border-white/10">
-      <div>
-        <h4 class="font-display font-bold text-white text-lg">¿Tienes otra pregunta sobre nuestras áreas o proyectos?</h4>
-        <p class="text-xs text-slate-400 font-light mt-1">Estamos disponibles para agendar una reunión o resolver consultas puntuales.</p>
-      </div>
-      <a
-        href="#contacto"
-        class="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest bg-white/10 hover:bg-[#d4af37] text-white hover:text-[#0a0a0e] transition-all duration-300 whitespace-nowrap"
-      >
-        Escribir Mensaje Directo
-      </a>
+    <!-- Still have questions box -->
+    <div class="text-center pt-8">
+      <p class="text-xs font-mono text-[#A7ADB5]">
+        ¿Tienes otra consulta o propuesta institucional? 
+        <a href="#contacto" class="text-[#C5A059] font-bold hover:underline ml-1">Contáctanos directamente →</a>
+      </p>
     </div>
 
   </div>
@@ -76,39 +70,48 @@ import { FAQ_ITEMS } from '../../data/portfolioData';
 <script>
   import gsap from 'gsap';
 
-  const faqButtons = document.querySelectorAll('.faq-question');
+  window.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
 
-  faqButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const parent = btn.closest('.faq-item');
-      const answer = parent?.querySelector('.faq-answer') as HTMLElement;
-      const icon = btn.querySelector('.faq-icon') as HTMLElement;
-      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    faqItems.forEach((item) => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content') as HTMLElement;
+      const plus = item.querySelector('.faq-icon-plus');
+      const minus = item.querySelector('.faq-icon-minus');
 
-      // Close any previously opened item for sleek accordion feel
-      faqButtons.forEach((otherBtn) => {
-        if (otherBtn !== btn && otherBtn.getAttribute('aria-expanded') === 'true') {
-          otherBtn.setAttribute('aria-expanded', 'false');
-          const otherParent = otherBtn.closest('.faq-item');
-          const otherAnswer = otherParent?.querySelector('.faq-answer') as HTMLElement;
-          const otherIcon = otherBtn.querySelector('.faq-icon') as HTMLElement;
-          gsap.to(otherAnswer, { height: 0, opacity: 0, duration: 0.4, ease: 'power3.inOut' });
-          gsap.to(otherIcon, { rotate: 0, duration: 0.3 });
-          otherIcon.innerHTML = '<span class="text-xl font-light leading-none">+</span>';
+      if (!trigger || !content) return;
+
+      let isOpen = false;
+
+      trigger.addEventListener('click', () => {
+        if (!isOpen) {
+          isOpen = true;
+          trigger.setAttribute('aria-expanded', 'true');
+          item.classList.add('border-[#C5A059]/50', 'bg-[#30343B]/80');
+          plus?.classList.add('hidden');
+          minus?.classList.remove('hidden');
+
+          gsap.to(content, {
+            height: 'auto',
+            opacity: 1,
+            duration: 0.45,
+            ease: 'power3.out'
+          });
+        } else {
+          isOpen = false;
+          trigger.setAttribute('aria-expanded', 'false');
+          item.classList.remove('border-[#C5A059]/50', 'bg-[#30343B]/80');
+          plus?.classList.remove('hidden');
+          minus?.classList.add('hidden');
+
+          gsap.to(content, {
+            height: 0,
+            opacity: 0,
+            duration: 0.35,
+            ease: 'power3.inOut'
+          });
         }
       });
-
-      if (isOpen) {
-        btn.setAttribute('aria-expanded', 'false');
-        gsap.to(answer, { height: 0, opacity: 0, duration: 0.4, ease: 'power3.inOut' });
-        gsap.to(icon, { rotate: 0, duration: 0.3 });
-        icon.innerHTML = '<span class="text-xl font-light leading-none">+</span>';
-      } else {
-        btn.setAttribute('aria-expanded', 'true');
-        gsap.to(answer, { height: 'auto', opacity: 1, duration: 0.45, ease: 'power3.inOut' });
-        gsap.to(icon, { rotate: 45, duration: 0.3 });
-        icon.innerHTML = '<span class="text-xl font-light leading-none">+</span>';
-      }
     });
   });
 </script>

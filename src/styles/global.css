@@ -1,42 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-bg: #0a0a0e;
-  --color-brand-surface: #141115;
-  --color-brand-surface-light: #201a21;
-  --color-brand-border: rgba(255, 255, 255, 0.14);
-  --color-brand-border-hover: rgba(212, 175, 55, 0.5);
-  
-  --color-accent-gold: #d4af37;
-  --color-accent-gold-light: #f3e5ab;
-  --color-accent-silver: #e2e8f0;
-  --color-accent-red: #8a1c14;
-  --color-accent-red-light: #b91c1c;
-  
+  /* Colores Neutros Innova UCSP */
+  --color-warm-white: #F8F6F1;
+  --color-light-gray: #E5E7EB;
+  --color-silver-gray: #A7ADB5;
+  --color-dark-gray: #30343B;
+  --color-blue-black: #101820;
+
+  /* Colores de Acento y Combinación Recomendada */
+  --color-innova-blue: #254166;
+  --color-innova-burgundy: #63242F;
+  --color-accent-gold: #C5A059;
+  --color-accent-sand: #D8C7A5;
+  --color-accent-sky: #8FAFC4;
+  --color-accent-petroleum: #176B78;
+  --color-accent-sage: #829B87;
+
+  /* Tipografías */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
   --font-serif: 'Playfair Display', serif;
 }
 
 :root {
-  --color-background: #0a0a0e;
-  --color-background-top: #1b0c13;
-  --color-background-soft: #160e14;
+  --color-background: #101820;
+  --color-background-navy: #254166;
+  --color-background-burgundy: #63242F;
 
-  --color-surface: #181318;
-  --color-surface-light: #261f26;
+  --color-surface: #17212b;
+  --color-surface-hover: #1e2c3a;
 
-  --color-text: #f8f6f8;
-  --color-text-soft: #d8d2d7;
-  --color-text-muted: #928892;
+  --color-text: #F8F6F1;
+  --color-text-soft: #E5E7EB;
+  --color-text-muted: #A7ADB5;
 
-  --color-border: rgba(255, 255, 255, 0.16);
-  --color-line: rgba(255, 255, 255, 0.35);
+  --color-border: rgba(229, 231, 235, 0.15);
+  --color-line: rgba(197, 160, 89, 0.35);
 
-  --color-button: #f8f6f8;
-  --color-button-text: #110d10;
-
-  --color-object-3d: rgba(138, 28, 20, 0.22);
+  --color-button: #F8F6F1;
+  --color-button-text: #101820;
 }
 
 @layer base {
@@ -49,26 +52,34 @@
   }
 
   body {
+    /* Fondo Degradado Atmosférico: Azul Marino (#254166) y Borgoña/Granate Oscuro (#63242F) fundidos con Negro Azulado (#101820) */
     background:
       radial-gradient(
-        circle at 50% 35%,
-        rgba(138, 28, 20, 0.25),
-        transparent 45%
+        circle at 15% 20%,
+        rgba(37, 65, 102, 0.65) 0%,
+        transparent 55%
       ),
       radial-gradient(
-        circle at 80% 80%,
-        rgba(212, 175, 55, 0.08),
+        circle at 85% 60%,
+        rgba(99, 36, 47, 0.6) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        circle at 50% 90%,
+        rgba(197, 160, 89, 0.12) 0%,
         transparent 50%
       ),
       linear-gradient(
-        180deg,
-        var(--color-background-top) 0%,
-        #130a11 45%,
-        var(--color-background) 100%
+        160deg,
+        #152438 0%,
+        #101820 45%,
+        #181116 75%,
+        #101820 100%
       );
+    background-attachment: fixed;
     min-height: 100vh;
-    selection-background-color: #d4af37;
-    selection-color: #0a0a0e;
+    selection-background-color: #C5A059;
+    selection-color: #101820;
   }
 
   /* Custom Scrollbar */
@@ -76,14 +87,14 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0a0e;
+    background: #101820;
   }
   ::-webkit-scrollbar-thumb {
-    background: #2b2228;
+    background: #30343B;
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #d4af37;
+    background: #C5A059;
   }
 }
 
@@ -126,22 +137,22 @@
   padding: 0.9rem 2.4rem;
   border: 1px solid transparent;
   border-radius: 0.85rem;
-  background: var(--color-button);
-  color: var(--color-button-text);
+  background: var(--color-warm-white);
+  color: var(--color-blue-black);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   transition: transform 300ms cubic-bezier(.2, .8, .2, 1), background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
-  box-shadow: 0 10px 30px -10px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(248, 246, 241, 0.25);
 }
 
 .button-primary:hover {
   transform: translateY(-4px);
-  background: transparent;
-  color: var(--color-text);
-  border-color: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 15px 35px -10px rgba(212, 175, 55, 0.35);
+  background: #C5A059;
+  color: #101820;
+  border-color: #D8C7A5;
+  box-shadow: 0 15px 35px -10px rgba(197, 160, 89, 0.45);
 }
 
 /* Obermann Editorial Form Fields */
@@ -150,8 +161,8 @@
   padding: 1.2rem 0;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid var(--color-line);
-  color: white;
+  border-bottom: 1px solid rgba(167, 173, 181, 0.35);
+  color: #F8F6F1;
   font-size: clamp(1.1rem, 1.8vw, 1.6rem);
   font-weight: 300;
   transition: border-color 0.3s ease;
@@ -159,20 +170,20 @@
 
 .form-field:focus {
   outline: none;
-  border-bottom-color: var(--color-accent-gold);
+  border-bottom-color: #C5A059;
 }
 
 .form-field::placeholder {
-  color: var(--color-text-muted);
+  color: #A7ADB5;
   font-weight: 300;
 }
 
-/* Satin Glass Panels */
+/* Satin Glass Panels (con tonos Negro azulado / Gris oscuro / Azul marino / Granate) */
 .glass-panel {
-  background: rgba(24, 19, 24, 0.75);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid var(--color-border);
+  background: rgba(16, 24, 32, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(229, 231, 235, 0.12);
 }
 
 .glass-panel-hover {
@@ -180,27 +191,27 @@
 }
 
 .glass-panel-hover:hover {
-  background: rgba(36, 28, 36, 0.9);
-  border-color: rgba(212, 175, 55, 0.45);
+  background: rgba(48, 52, 59, 0.85);
+  border-color: rgba(197, 160, 89, 0.5);
   transform: translateY(-4px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px -5px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(16, 24, 32, 0.9), 0 0 30px -5px rgba(197, 160, 89, 0.22);
 }
 
 /* Gradients */
 .text-gradient-gold {
-  background: linear-gradient(135deg, #ffffff 0%, #f3e5ab 50%, #d4af37 100%);
+  background: linear-gradient(135deg, #F8F6F1 0%, #D8C7A5 50%, #C5A059 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-silver {
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+  background: linear-gradient(135deg, #F8F6F1 0%, #E5E7EB 50%, #A7ADB5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-crimson {
-  background: linear-gradient(135deg, #ffffff 0%, #f87171 40%, #b91c1c 100%);
+.text-gradient-innova {
+  background: linear-gradient(135deg, #8FAFC4 0%, #F8F6F1 45%, #C5A059 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
