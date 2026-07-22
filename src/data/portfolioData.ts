@@ -64,42 +64,42 @@ export const DIRECTIVA: DirectivaMember[] = [
   {
     name: "Abigail Yajahira Romero Ramirez",
     role: "Presidenta",
-    image: "/Imagenes/presidenta.jpg"
+    image: "/Imagenes/presidenta.webp"
   },
   {
     name: "Maxwell Fabricio Yauri Mamani",
     role: "Vicepresidente",
-    image: "/Imagenes/director_ti.png"
+    image: "/Imagenes/director_ti.webp"
   },
   {
     name: "Frandux Brayan Cardenas Pacheco",
     role: "Director de TI",
-    image: "/Imagenes/Franduxcitolindo.jpg"
+    image: "/Imagenes/Franduxcitolindo.webp"
   },
   {
     name: "Jorge Molina Quispe",
     role: "Director de Talento Humano",
-    image: "/Imagenes/Director_th2.jpg"
+    image: "/Imagenes/Director_th2.webp"
   },
   {
     name: "Víctor Manuel Moreno Delgado",
     role: "Director de P.M.O",
-    image: "/Imagenes/director_pmo.png"
+    image: "/Imagenes/director_pmo.webp"
   },
   {
     name: "Diego R. Justo Presbitero",
     role: "Director de Logística",
-    image: "/Imagenes/director_log.png"
+    image: "/Imagenes/director_log.webp"
   },
   {
     name: "Jimena Yunet David Cardenas",
     role: "Directora de Marketing",
-    image: "/Imagenes/directora_mkt2.png"
+    image: "/Imagenes/directora_mkt2.webp"
   },
   {
     name: "Andrea del Rosario Alarcon Sarmiento",
     role: "Directora de R.I",
-    image: "/Imagenes/Directora_RI4.jpg"
+    image: "/Imagenes/Directora_RI4.webp"
   }
 ];
 
@@ -110,7 +110,7 @@ export const AREAS: AreaItem[] = [
     slogan: "“Lidera y logra con éxito tus ideas”",
     description: "Se encarga de la planificación, ejecución y monitoreo de los proyectos de Innova UCSP, aplicando metodologías de gestión para asegurar su éxito y alineación con los objetivos estratégicos.",
     director: "Víctor Manuel Moreno Delgado",
-    directorImage: "/Imagenes/director_pmo.png",
+    directorImage: "/Imagenes/director_pmo.webp",
     badgeColor: "#d4af37"
   },
   {
@@ -119,7 +119,7 @@ export const AREAS: AreaItem[] = [
     slogan: "“Soñamos, innovamos y logramos”",
     description: "Encargada de desarrollar, gestionar y optimizar herramientas digitales para mejorar la eficiencia de la organización. Brinda soporte tecnológico y promueve la innovación en los proyectos de Innova UCSP.",
     director: "Frandux Brayan Cardenas Pacheco",
-    directorImage: "/Imagenes/Franduxcitolindo.jpg",
+    directorImage: "/Imagenes/Franduxcitolindo.webp",
     badgeColor: "#e2e8f0"
   },
   {
@@ -128,7 +128,7 @@ export const AREAS: AreaItem[] = [
     slogan: "“Promocionando ideas con el corazón”",
     description: "Lidera la identidad visual y la estrategia de comunicación de Innova UCSP. Gestiona redes sociales, contenido digital y difusión de eventos para fortalecer la presencia y conexión con la comunidad.",
     director: "Jimena Yunet David Cardenas",
-    directorImage: "/Imagenes/directora_mkt2.png",
+    directorImage: "/Imagenes/directora_mkt2.webp",
     badgeColor: "#8a1c14"
   },
   {
@@ -137,7 +137,7 @@ export const AREAS: AreaItem[] = [
     slogan: "“Formando alianzas para seguir creciendo”",
     description: "Establece y mantiene alianzas estratégicas con empresas, instituciones y organizaciones externas e internas. Gestiona oportunidades de colaboración para potenciar el impacto de Innova UCSP.",
     director: "Andrea del Rosario Alarcon Sarmiento",
-    directorImage: "/Imagenes/Directora_RI4.jpg",
+    directorImage: "/Imagenes/Directora_RI4.webp",
     badgeColor: "#d4af37"
   },
   {
@@ -146,7 +146,7 @@ export const AREAS: AreaItem[] = [
     slogan: "“Personas que inspiran, talento que transforma”",
     description: "Fomenta el crecimiento y bienestar de los miembros de Innova UCSP. Desarrolla estrategias de reclutamiento, capacitación e integración para fortalecer el equipo y su compromiso con la organización.",
     director: "Jorge Molina Quispe",
-    directorImage: "/Imagenes/Director_th2.jpg",
+    directorImage: "/Imagenes/Director_th2.webp",
     badgeColor: "#e2e8f0"
   },
   {
@@ -155,7 +155,7 @@ export const AREAS: AreaItem[] = [
     slogan: "“Gestión que impulsa la transformación”",
     description: "Nuestra área garantiza la correcta gestión y ejecución de eventos y actividades, asegurando que los recursos, espacios y materiales estén disponibles para el desarrollo óptimo de cada iniciativa.",
     director: "Diego R. Justo Presbitero",
-    directorImage: "/Imagenes/director_log.png",
+    directorImage: "/Imagenes/director_log.webp",
     badgeColor: "#8a1c14"
   }
 ];
@@ -165,7 +165,7 @@ export const PROJECTS_AND_MILESTONES: ProjectMilestone[] = [
     id: "demon-hub",
     title: "Organización del Demon InnovationHub",
     category: "Gestión & Innovación",
-    image: "/Imagenes/img11.jpg",
+    image: "/Imagenes/img11.webp",
     description: "Espacio interinstitucional de prototipado y diseño de soluciones interdisciplinarias en la UCSP.",
     featured: true
   },
@@ -173,7 +173,7 @@ export const PROJECTS_AND_MILESTONES: ProjectMilestone[] = [
     id: "congreso-pmi",
     title: "Congreso Internacional PMI 2024",
     category: "Liderazgo PMO",
-    image: "/Imagenes/img8.png",
+    image: "/Imagenes/img8.webp",
     description: "Representación institucional e intercambio de mejores prácticas de project management a nivel global.",
     featured: true
   },
@@ -181,7 +181,7 @@ export const PROJECTS_AND_MILESTONES: ProjectMilestone[] = [
     id: "rio-chili",
     title: "Ayuda y Limpieza del Río Chili",
     category: "Impacto Sostenible",
-    image: "/Imagenes/img5.jpg",
+    image: "/Imagenes/img5.webp",
     description: "Iniciativa de responsabilidad social y voluntariado articulada por nuestro equipo de Logística y Talento Humano.",
     featured: true
   },
@@ -189,7 +189,7 @@ export const PROJECTS_AND_MILESTONES: ProjectMilestone[] = [
     id: "pmi-sur",
     title: "Encuentro Regional PMI SUR",
     category: "Alianzas R.I.",
-    image: "/Imagenes/img15.jpg",
+    image: "/Imagenes/img15.webp",
     description: "Consolidación de redes estratégicas con líderes de proyectos de la región sur del Perú.",
     featured: true
   },
@@ -197,7 +197,7 @@ export const PROJECTS_AND_MILESTONES: ProjectMilestone[] = [
     id: "aniversario",
     title: "Aniversario Cedipro-Innova",
     category: "Comunidad & Cultura",
-    image: "/Imagenes/img10.jpg",
+    image: "/Imagenes/img10.webp",
     description: "Celebración de nuestra trayectoria formando gestores y líderes tecnológicos en la universidad.",
     featured: false
   },
@@ -205,7 +205,7 @@ export const PROJECTS_AND_MILESTONES: ProjectMilestone[] = [
     id: "eco-canje",
     title: "Participación en Eco Canje UCSP",
     category: "Sostenibilidad",
-    image: "/Imagenes/img20.jpg",
+    image: "/Imagenes/img20.webp",
     description: "Promoción activa de iniciativas ecológicas y concientización ambiental en el campus.",
     featured: false
   },
@@ -213,7 +213,7 @@ export const PROJECTS_AND_MILESTONES: ProjectMilestone[] = [
     id: "ponencias",
     title: "Ciclo de Ponencias & Masterclasses",
     category: "Educación Continua",
-    image: "/Imagenes/img9.jpg",
+    image: "/Imagenes/img9.webp",
     description: "Talleres especializados impartidos por directores y ponentes invitados en ágiles y tecnología.",
     featured: false
   },
@@ -221,7 +221,7 @@ export const PROJECTS_AND_MILESTONES: ProjectMilestone[] = [
     id: "albergue-perritos",
     title: "Visita y Apoyo a Albergue Canino",
     category: "Responsabilidad Social",
-    image: "/Imagenes/visitaperritos.jpg",
+    image: "/Imagenes/visitaperritos.webp",
     description: "Acción social comunitaria para apoyar el bienestar animal con la colaboración de nuestros miembros.",
     featured: false
   },
@@ -229,7 +229,7 @@ export const PROJECTS_AND_MILESTONES: ProjectMilestone[] = [
     id: "semana-industrial",
     title: "Semana de Ingeniería Industrial",
     category: "Articulación Académica",
-    image: "/Imagenes/img21.jpg",
+    image: "/Imagenes/img21.webp",
     description: "Presencia e impulso de innovación y gestión de proyectos en el departamento de Ingeniería Industrial.",
     featured: false
   },
@@ -237,7 +237,7 @@ export const PROJECTS_AND_MILESTONES: ProjectMilestone[] = [
     id: "reuniones-alianzas",
     title: "Reuniones de Alianzas Estratégicas",
     category: "Relaciones R.I.",
-    image: "/Imagenes/Fondoorganizaciones.jpg",
+    image: "/Imagenes/Fondoorganizaciones.webp",
     description: "Mesa de diálogo permanente con organizaciones universitarias y corporativas externas.",
     featured: false
   }
@@ -338,21 +338,21 @@ export const REDES_SOCIALES: SocialLink[] = [
   {
     platform: "Facebook",
     url: "https://www.facebook.com/Sediproucsp/?locale=es_LA",
-    iconImage: "/Imagenes/Logo_fb.png"
+    iconImage: "/Imagenes/Logo_fb.webp"
   },
   {
     platform: "Instagram",
     url: "https://www.instagram.com/innovaucsp/?hl=es",
-    iconImage: "/Imagenes/Logo_ig.png"
+    iconImage: "/Imagenes/Logo_ig.webp"
   },
   {
     platform: "LinkedIn",
     url: "https://www.linkedin.com/company/cedipro-innova-ucsp/?originalSubdomain=pe",
-    iconImage: "/Imagenes/Logo_Linkedin.png"
+    iconImage: "/Imagenes/Logo_Linkedin.webp"
   },
   {
     platform: "TikTok",
     url: "https://www.tiktok.com/@cediproinnovaucsp?_t=ZS-8ztwvNOpcLH&_r=1",
-    iconImage: "/Imagenes/logo_tick.jpg"
+    iconImage: "/Imagenes/logo_tick.webp"
   }
 ];
