@@ -15,7 +15,7 @@
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     container.appendChild(renderer.domElement);
 
     // Lights adapted to Innova UCSP Palette: #254166 (Azul principal), #63242F (Granate), #C5A059 (Dorado elegante)
@@ -42,17 +42,14 @@
     const group = new THREE.Group();
     scene.add(group);
 
-    // Main physical material: deep blue-black (#101820) with navy/gold transmission
-    const mainMaterial = new THREE.MeshPhysicalMaterial({
+    // Main material: deep blue-black (#101820) optimized for performance
+    const mainMaterial = new THREE.MeshStandardMaterial({
       color: 0x101820,
       emissive: 0x0c1218,
       transparent: true,
-      opacity: 0.38,
+      opacity: 0.5,
       roughness: 0.25,
       metalness: 0.5,
-      transmission: 0.4,
-      clearcoat: 0.85,
-      clearcoatRoughness: 0.15,
       side: THREE.DoubleSide,
       wireframe: false
     });
@@ -72,10 +69,10 @@
     group.add(wire1);
 
     // Inner geometric nucleus (Burgundy #63242F / Gold #C5A059 tinted)
-    const innerMaterial = new THREE.MeshPhysicalMaterial({
+    const innerMaterial = new THREE.MeshStandardMaterial({
       color: 0x63242F,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.55,
       roughness: 0.12,
       metalness: 0.65
     });
