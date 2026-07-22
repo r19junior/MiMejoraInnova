@@ -15,9 +15,10 @@
     const camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 15;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    // Cap pixel ratio to 1.2 for massive performance boost, especially on high-DPI mobile screens
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.2));
     container.appendChild(renderer.domElement);
 
     const group = new THREE.Group();
@@ -28,13 +29,14 @@
     group.add(innerGroup);
     group.add(outerGroup);
 
+    const isMobile = window.innerWidth < 768;
+
     // Particle material
+    // Disabling transparency and blending avoids expensive GPU depth sorting and overdraw (massive FPS boost)
     const particleMaterial = new THREE.PointsMaterial({
-      size: 0.08, // Increased size to make it stand out much more
-      transparent: true,
-      opacity: 1.0, 
-      vertexColors: true,
-      blending: THREE.NormalBlending 
+      size: isMobile ? 0.08 : 0.12, // Larger particles to compensate for lower point count
+      transparent: false, 
+      vertexColors: true
     });
 
     // Load Image and create particles
@@ -44,8 +46,8 @@
     img.onload = () => {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      // Resolution of particle scan
-      const res = 180;
+      // Lower resolution drastically reduces vertex count (100 = 10k points max vs 32k)
+      const res = isMobile ? 100 : 120;
       canvas.width = res;
       canvas.height = res;
       ctx.drawImage(img, 0, 0, res, res);
@@ -85,8 +87,8 @@
             // Give it 3D depth volume (random z)
             const nz = (Math.random() - 0.5) * 0.4; 
 
-            // Scale up the points in the 3D space to make it MASSIVE and stand out
-            const scale = 4.8;
+            // Scale up the points in the 3D space. Make it smaller on mobile so it doesn't overflow.
+            const scale = isMobile ? 2.8 : 4.8;
             const px = nx * scale;
             const py = ny * scale;
             const pz = nz * scale;
