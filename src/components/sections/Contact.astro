@@ -11,10 +11,10 @@ import { INNOVA_INFO, REDES_SOCIALES } from '../../data/portfolioData';
       
       <div class="space-y-4">
         <span class="text-xs uppercase tracking-widest text-[#C5A059] font-mono font-semibold">09. Conexión & Comunidad</span>
-        <h2 class="hero-title font-display text-[#F8F6F1] leading-none">
-          Hablemos <span class="block font-serif italic font-normal text-gradient-gold">del Futuro</span>
+        <h2 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-[#F8F6F1] leading-tight">
+          Hablemos del <span class="font-serif italic font-normal text-gradient-gold">Futuro</span>
         </h2>
-        <p class="text-base text-[#E5E7EB] font-light leading-relaxed pt-2">
+        <p class="text-sm text-[#A7ADB5] font-light max-w-sm pt-2">
           ¿Tienes una propuesta para nuestras 6 áreas, deseas postular a Innova UCSP o coordinar una alianza estratégica? Escríbenos y hagámoslo realidad.
         </p>
       </div>
@@ -79,74 +79,74 @@ import { INNOVA_INFO, REDES_SOCIALES } from '../../data/portfolioData';
       <form id="editorial-contact-form" class="space-y-8" novalidate>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <div class="space-y-1">
-            <label for="name" class="text-xs font-mono uppercase tracking-widest text-[#A7ADB5]">01. Tu Nombre Completo *</label>
+          <div class="space-y-2">
+            <label for="name" class="text-[10px] font-mono uppercase tracking-widest text-[#A7ADB5] font-semibold">01. Tu Nombre Completo *</label>
             <input
               type="text"
               id="name"
               name="name"
               required
               placeholder="Ej. Carlos Mendoza"
-              class="form-field"
+              class="w-full bg-[#17212b]/50 border border-[#E5E7EB]/10 rounded-xl px-4 py-3.5 text-sm text-[#F8F6F1] placeholder-[#A7ADB5]/50 focus:outline-none focus:border-[#C5A059] focus:bg-[#101820] transition-all"
             />
-            <span class="error-msg text-xs font-mono text-rose-400 hidden">Por favor ingresa tu nombre.</span>
+            <span class="error-msg text-[10px] font-mono text-rose-400 hidden">Por favor ingresa tu nombre.</span>
           </div>
 
-          <div class="space-y-1">
-            <label for="email" class="text-xs font-mono uppercase tracking-widest text-[#A7ADB5]">02. Tu Correo Electrónico *</label>
+          <div class="space-y-2">
+            <label for="email" class="text-[10px] font-mono uppercase tracking-widest text-[#A7ADB5] font-semibold">02. Tu Correo Electrónico *</label>
             <input
               type="email"
               id="email"
               name="email"
               required
               placeholder="carlos@ucsp.edu.pe"
-              class="form-field"
+              class="w-full bg-[#17212b]/50 border border-[#E5E7EB]/10 rounded-xl px-4 py-3.5 text-sm text-[#F8F6F1] placeholder-[#A7ADB5]/50 focus:outline-none focus:border-[#C5A059] focus:bg-[#101820] transition-all"
             />
-            <span class="error-msg text-xs font-mono text-rose-400 hidden">Ingresa un correo electrónico válido.</span>
+            <span class="error-msg text-[10px] font-mono text-rose-400 hidden">Ingresa un correo electrónico válido.</span>
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <div class="space-y-1">
-            <label for="organization" class="text-xs font-mono uppercase tracking-widest text-[#A7ADB5]">03. Universidad u Organización</label>
+          <div class="space-y-2">
+            <label for="organization" class="text-[10px] font-mono uppercase tracking-widest text-[#A7ADB5] font-semibold">03. Universidad u Organización</label>
             <input
               type="text"
               id="organization"
               name="organization"
               placeholder="Ej. UCSP / Estudiante TI"
-              class="form-field"
+              class="w-full bg-[#17212b]/50 border border-[#E5E7EB]/10 rounded-xl px-4 py-3.5 text-sm text-[#F8F6F1] placeholder-[#A7ADB5]/50 focus:outline-none focus:border-[#C5A059] focus:bg-[#101820] transition-all"
             />
           </div>
 
-          <div class="space-y-1">
-            <label for="area-select" class="text-xs font-mono uppercase tracking-widest text-[#A7ADB5]">04. Área de Interés</label>
+          <div class="space-y-2">
+            <label for="area-select" class="text-[10px] font-mono uppercase tracking-widest text-[#A7ADB5] font-semibold">04. Área de Interés</label>
             <select
               id="area-select"
               name="area"
-              class="form-field text-[#F8F6F1] bg-[#101820] cursor-pointer"
+              class="w-full bg-[#17212b]/50 border border-[#E5E7EB]/10 rounded-xl px-4 py-3.5 text-sm text-[#F8F6F1] focus:outline-none focus:border-[#C5A059] focus:bg-[#101820] transition-all appearance-none cursor-pointer"
             >
-              <option value="general" class="bg-[#101820]">Consulta General / Postulación</option>
-              <option value="ti" class="bg-[#101820]">Área de TI (Desarrollo & Tech)</option>
-              <option value="pmo" class="bg-[#101820]">Área de P.M.O (Gestión)</option>
-              <option value="mkt" class="bg-[#101820]">Área de Marketing & Branding</option>
-              <option value="ri" class="bg-[#101820]">Relaciones Interinstitucionales</option>
-              <option value="th" class="bg-[#101820]">Talento Humano</option>
-              <option value="log" class="bg-[#101820]">Logística & Eventos</option>
+              <option value="general">Consulta General / Postulación</option>
+              <option value="ti">Área de TI (Desarrollo & Tech)</option>
+              <option value="pmo">Área de P.M.O (Gestión)</option>
+              <option value="mkt">Área de Marketing & Branding</option>
+              <option value="ri">Relaciones Interinstitucionales</option>
+              <option value="th">Talento Humano</option>
+              <option value="log">Logística & Eventos</option>
             </select>
           </div>
         </div>
 
-        <div class="space-y-1">
-          <label for="message" class="text-xs font-mono uppercase tracking-widest text-[#A7ADB5]">05. Cuéntanos sobre tu iniciativa o consulta *</label>
+        <div class="space-y-2">
+          <label for="message" class="text-[10px] font-mono uppercase tracking-widest text-[#A7ADB5] font-semibold">05. Mensaje o Consulta *</label>
           <textarea
             id="message"
             name="message"
-            rows="3"
+            rows="4"
             required
             placeholder="Escribe tu mensaje, propuesta de evento o inquietud..."
-            class="form-field resize-none"
+            class="w-full bg-[#17212b]/50 border border-[#E5E7EB]/10 rounded-xl px-4 py-3.5 text-sm text-[#F8F6F1] placeholder-[#A7ADB5]/50 focus:outline-none focus:border-[#C5A059] focus:bg-[#101820] transition-all resize-none"
           ></textarea>
-          <span class="error-msg text-xs font-mono text-rose-400 hidden">El mensaje es obligatorio (mínimo 10 caracteres).</span>
+          <span class="error-msg text-[10px] font-mono text-rose-400 hidden">El mensaje es obligatorio (mínimo 10 caracteres).</span>
         </div>
 
         <!-- Submit Button -->

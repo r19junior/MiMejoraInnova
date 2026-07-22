@@ -1,7 +1,7 @@
 ---
 ---
 
-<div id="three-hero-container" class="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-95"></div>
+<div id="three-hero-container" class="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-90"></div>
 
 <script>
   import * as THREE from 'three';
@@ -10,90 +10,117 @@
 
   if (container) {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 6.5;
+    
+    // Narrow FOV (25) prevents "egg" distortion (perspective stretching) at the edges of the screen
+    const camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 15;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     container.appendChild(renderer.domElement);
 
-    // Lights adapted to Innova UCSP Palette: #254166 (Azul principal), #63242F (Granate), #C5A059 (Dorado elegante)
-    const ambientLight = new THREE.AmbientLight(0xF8F6F1, 0.85);
-    scene.add(ambientLight);
-
-    const goldLight = new THREE.DirectionalLight(0xC5A059, 3.8);
-    goldLight.position.set(5, 5, 4);
-    scene.add(goldLight);
-
-    const navyLight = new THREE.DirectionalLight(0x254166, 4.5);
-    navyLight.position.set(-5, 3, 4);
-    scene.add(navyLight);
-
-    const burgundyLight = new THREE.DirectionalLight(0x63242F, 4.2);
-    burgundyLight.position.set(-4, -4, 3);
-    scene.add(burgundyLight);
-
-    const silverLight = new THREE.PointLight(0xA7ADB5, 2.5, 15);
-    silverLight.position.set(0, 4, -2);
-    scene.add(silverLight);
-
-    // Abstract Geometric Group (Obermann Style 3D crystalline structure)
     const group = new THREE.Group();
     scene.add(group);
 
-    // Main material: deep blue-black (#101820) optimized for performance
-    const mainMaterial = new THREE.MeshStandardMaterial({
-      color: 0x101820,
-      emissive: 0x0c1218,
+    const innerGroup = new THREE.Group();
+    const outerGroup = new THREE.Group();
+    group.add(innerGroup);
+    group.add(outerGroup);
+
+    // Particle material
+    const particleMaterial = new THREE.PointsMaterial({
+      size: 0.08, // Increased size to make it stand out much more
       transparent: true,
-      opacity: 0.5,
-      roughness: 0.25,
-      metalness: 0.5,
-      side: THREE.DoubleSide,
-      wireframe: false
+      opacity: 1.0, 
+      vertexColors: true,
+      blending: THREE.NormalBlending 
     });
 
-    const wireframeMaterial = new THREE.MeshBasicMaterial({
-      color: 0xC5A059,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.18
-    });
+    // Load Image and create particles
+    const img = new Image();
+    img.src = '/favicon.webp';
+    img.crossOrigin = 'Anonymous';
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      // Resolution of particle scan
+      const res = 180;
+      canvas.width = res;
+      canvas.height = res;
+      ctx.drawImage(img, 0, 0, res, res);
+      const data = ctx.getImageData(0, 0, res, res).data;
 
-    // Outer Icosahedron
-    const geo1 = new THREE.IcosahedronGeometry(2.2, 1);
-    const mesh1 = new THREE.Mesh(geo1, mainMaterial);
-    const wire1 = new THREE.Mesh(geo1, wireframeMaterial);
-    group.add(mesh1);
-    group.add(wire1);
+      const innerPositions = [];
+      const innerColors = [];
+      const outerPositions = [];
+      const outerColors = [];
 
-    // Inner geometric nucleus (Burgundy #63242F / Gold #C5A059 tinted)
-    const innerMaterial = new THREE.MeshStandardMaterial({
-      color: 0x63242F,
-      transparent: true,
-      opacity: 0.55,
-      roughness: 0.12,
-      metalness: 0.65
-    });
-    const geo2 = new THREE.OctahedronGeometry(1.2, 0);
-    const mesh2 = new THREE.Mesh(geo2, innerMaterial);
-    mesh2.rotation.set(0.5, 0.5, 0);
-    group.add(mesh2);
+      const colorBlue = new THREE.Color(0x254166);
+      const colorRed = new THREE.Color(0x63242F);
+      const colorGold = new THREE.Color(0xC5A059);
 
-    // Floating outer crystalline shards (Sage / Sky / Sand accents)
-    const shardGeo = new THREE.TetrahedronGeometry(0.4, 0);
-    const shardPositions = [
-      [-3.0, 1.8, -1.0],
-      [3.2, -1.5, 0.5],
-      [1.8, 2.6, 1.2],
-      [-2.2, -2.4, -0.8]
-    ];
-    shardPositions.forEach((pos, idx) => {
-      const shard = new THREE.Mesh(shardGeo, idx % 2 === 0 ? mainMaterial : wireframeMaterial);
-      shard.position.set(pos[0], pos[1], pos[2]);
-      group.add(shard);
-    });
+      for (let y = 0; y < res; y++) {
+        for (let x = 0; x < res; x++) {
+          const idx = (y * res + x) * 4;
+          const r = data[idx];
+          const g = data[idx+1];
+          const b = data[idx+2];
+          const a = data[idx+3];
+
+          // Ignore transparent pixels AND ignore white/light-gray background/noise pixels
+          const isWhiteBackground = (r > 180 && g > 180 && b > 180);
+
+          if (a > 100 && !isWhiteBackground) { 
+            // Normalized coords from -1 to 1
+            const nx = (x / res) * 2 - 1;
+            const ny = -(y / res) * 2 + 1; 
+
+            // Calculate distance from center to crop into a perfect circle
+            const dist = Math.sqrt(nx*nx + ny*ny);
+
+            // Strictly ignore anything outside a circle (removes corner noise)
+            if (dist > 0.95) continue;
+            
+            // Give it 3D depth volume (random z)
+            const nz = (Math.random() - 0.5) * 0.4; 
+
+            // Scale up the points in the 3D space to make it MASSIVE and stand out
+            const scale = 4.8;
+            const px = nx * scale;
+            const py = ny * scale;
+            const pz = nz * scale;
+
+            // Use a slightly elliptical distance check to safely enclose the tall 'i' and its crescent
+            const ellipticalDist = Math.sqrt(nx*nx + (ny*ny)*0.7);
+
+            // Use the actual pixel color from the image, just boosted slightly so it glows
+            const particleColor = new THREE.Color(r/255, g/255, b/255).lerp(new THREE.Color(0xffffff), 0.15);
+            
+            // The white gap in the logo is around 0.38 radius
+            if (ellipticalDist < 0.39) {
+              innerPositions.push(px, py, pz);
+              innerColors.push(particleColor.r, particleColor.g, particleColor.b);
+            } else {
+              outerPositions.push(px, py, pz);
+              outerColors.push(particleColor.r, particleColor.g, particleColor.b);
+            }
+          }
+        }
+      }
+
+      const innerGeo = new THREE.BufferGeometry();
+      innerGeo.setAttribute('position', new THREE.Float32BufferAttribute(innerPositions, 3));
+      innerGeo.setAttribute('color', new THREE.Float32BufferAttribute(innerColors, 3));
+      const innerPoints = new THREE.Points(innerGeo, particleMaterial);
+      innerGroup.add(innerPoints);
+
+      const outerGeo = new THREE.BufferGeometry();
+      outerGeo.setAttribute('position', new THREE.Float32BufferAttribute(outerPositions, 3));
+      outerGeo.setAttribute('color', new THREE.Float32BufferAttribute(outerColors, 3));
+      const outerPoints = new THREE.Points(outerGeo, particleMaterial);
+      outerGroup.add(outerPoints);
+    };
 
     // Mouse interactive tilt
     let mouseX = 0;
@@ -106,29 +133,32 @@
       mouseY = (event.clientY - windowHalfY) * 0.0008;
     });
 
-    // Resize handling
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // Animation Loop
     const clock = new THREE.Clock();
     function animate() {
       requestAnimationFrame(animate);
       const elapsed = clock.getElapsedTime();
 
-      group.rotation.x += 0.0015;
-      group.rotation.y += 0.0025;
+      // Outer gear rotates constantly
+      outerGroup.rotation.z -= 0.003; 
 
-      // Subtle pulse and mouse reaction
-      group.position.y = Math.sin(elapsed * 0.8) * 0.15;
-      group.rotation.x += (mouseY - group.rotation.x) * 0.05;
-      group.rotation.y += (mouseX - group.rotation.y) * 0.05;
+      // Subtle 3D bobbing and mouse reaction for the whole group
+      const targetX = 0; // Keeps it strictly in the center
+      
+      group.position.x += (targetX - group.position.x) * 0.05;
+      group.position.y = Math.sin(elapsed * 0.5) * 0.1;
+      
+      // Add slight 3D perspective tilt
+      const targetRotationX = mouseY + 0.1; // Default slight tilt
+      const targetRotationY = mouseX - 0.1;
 
-      mesh2.rotation.y -= 0.008;
-      mesh2.rotation.z += 0.005;
+      group.rotation.x += (targetRotationX - group.rotation.x) * 0.05;
+      group.rotation.y += (targetRotationY - group.rotation.y) * 0.05;
 
       renderer.render(scene, camera);
     }

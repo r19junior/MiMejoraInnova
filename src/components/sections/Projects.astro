@@ -6,17 +6,90 @@ import { AREAS } from '../../data/portfolioData';
   
   <div class="space-y-24 relative z-10">
     
-    <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-l-2 border-[#C5A059] pl-6">
-      <div class="space-y-3">
-        <span class="text-xs uppercase tracking-widest text-[#C5A059] font-mono font-semibold">02. Ecosistema Institucional</span>
-        <h2 class="section-title font-display text-[#F8F6F1]">
-          Nuestras 6 <span class="font-serif italic font-normal text-gradient-gold">Áreas Especializadas</span>
-        </h2>
+    <!-- Layout Titulo + Mapa Radial en 2 columnas -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-4 items-center">
+      
+      <!-- Section Header (Izquierda) -->
+      <div class="lg:col-span-4 flex flex-col gap-6 border-l-2 border-[#C5A059] pl-6 z-20">
+        <div class="space-y-3">
+          <span class="text-xs uppercase tracking-widest text-[#C5A059] font-mono font-semibold">02. Ecosistema Institucional</span>
+          <h2 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-[#F8F6F1] leading-tight">
+            Nuestras 6 <br class="hidden lg:block"/><span class="font-serif italic font-normal text-gradient-gold">Áreas Especializadas</span>
+          </h2>
+        </div>
+        <p class="text-sm text-[#A7ADB5] font-light max-w-sm">
+          Cada área opera de manera sinérgica como una unidad de alta dirección para concebir, diseñar y ejecutar proyectos en la UCSP.
+        </p>
       </div>
-      <p class="text-sm text-[#A7ADB5] font-light max-w-md">
-        Cada área opera de manera sinérgica como una unidad de alta dirección para concebir, diseñar y ejecutar proyectos en la UCSP.
-      </p>
+
+      <!-- Radial Hexagon Map (Derecha) -->
+      <div class="lg:col-span-8 relative w-full flex items-center justify-center overflow-hidden sm:overflow-visible py-4 md:py-12">
+        
+        <!-- Center Logo -->
+        <div class="absolute z-20 w-28 h-28 md:w-36 md:h-36 rounded-full bg-[#F8F6F1] border-4 border-[#C5A059] flex items-center justify-center overflow-hidden shadow-[0_0_40px_rgba(197,160,89,0.3)] hover:scale-110 transition-all duration-700 group/logo">
+          <img src="/favicon.webp" alt="Innova Logo" class="w-full h-full object-contain p-2 md:p-3 group-hover/logo:scale-110 transition-transform duration-700" />
+        </div>
+
+        <!-- Connecting Orbits -->
+        <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+          <div class="absolute w-[230px] h-[230px] md:w-[420px] md:h-[420px] rounded-full border border-[#C5A059]/10"></div>
+          <div class="absolute w-[230px] h-[230px] md:w-[420px] md:h-[420px] rounded-full border-t border-[#C5A059]/40 animate-[spin_15s_linear_infinite]"></div>
+        </div>
+
+        <!-- Hexagons orbit -->
+        <div class="relative z-10 w-full h-[380px] md:h-[580px] flex items-center justify-center">
+          {AREAS.map((area, idx) => {
+            const angle = (idx * 60) - 90; // Start at top (-90deg)
+            
+            // Map to correct image filename based on area.id
+            const bgMap = {
+              'pmo': 'boton_PMO.webp',
+              'ti': 'boton_TI.webp',
+              'mkt': 'boton_marketing.webp',
+              'ri': 'boton_RI.webp',
+              'th': 'boton_TH.webp',
+              'log': 'boton_logistica.webp'
+            };
+            const bgImage = `/Imagenes/${bgMap[area.id]}`;
+
+            return (
+              <a 
+                href={`#${area.id}`}
+                class="absolute top-1/2 left-1/2 w-[100px] h-[115px] md:w-[150px] md:h-[175px] -mt-[57.5px] -ml-[50px] md:-mt-[87.5px] md:-ml-[75px] transition-all duration-500 hover:z-50 group/hex orbit-item"
+                style={`transform: rotate(${angle}deg) translateX(var(--radius)) rotate(${-angle}deg);`}
+              >
+                <div class="w-full h-full glass-panel border border-[#E5E7EB]/30 group-hover/hex:border-[#C5A059] flex flex-col items-center justify-center p-2 text-center cursor-pointer transition-all duration-500 group-hover/hex:scale-110 md:group-hover/hex:scale-125 hex-shape shadow-xl relative overflow-visible group-hover/hex:shadow-[0_15px_40px_rgba(197,160,89,0.5)]">
+                  
+                  <!-- Background Image -->
+                  <div class="absolute inset-0 z-0 hex-shape overflow-hidden">
+                    <img src={bgImage} alt={area.name} class="w-full h-full object-cover opacity-60 group-hover/hex:opacity-20 transition-opacity duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#101820] via-[#101820]/60 to-[#101820]/40 group-hover/hex:to-[#101820]/80 transition-colors duration-500"></div>
+                  </div>
+                  
+                  <!-- Default State: Area Name -->
+                  <div class="absolute inset-0 flex items-center justify-center p-2 transition-all duration-500 group-hover/hex:-translate-y-3 md:group-hover/hex:-translate-y-4 group-hover/hex:scale-90 z-10">
+                    <span class="font-display font-bold text-[8.5px] md:text-[12px] text-[#F8F6F1] group-hover/hex:text-[#C5A059] transition-colors leading-tight uppercase tracking-widest drop-shadow-md break-words w-full">
+                      {area.name}
+                    </span>
+                  </div>
+
+                  <!-- Hover State: Description (Slogan) -->
+                  <div class="absolute inset-x-0 bottom-3 md:bottom-5 px-2 opacity-0 translate-y-4 group-hover/hex:opacity-100 group-hover/hex:translate-y-0 transition-all duration-500 delay-75 z-20 flex justify-center pointer-events-none">
+                    <span class="text-[7px] md:text-[8.5px] text-[#E5E7EB] leading-tight font-light font-mono text-center drop-shadow-md hidden md:block">
+                      {area.slogan}
+                    </span>
+                    <!-- Mobile simplified hover text -->
+                    <span class="text-[7px] text-[#E5E7EB] leading-tight font-light font-mono text-center drop-shadow-md md:hidden">
+                      Ver área →
+                    </span>
+                  </div>
+
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </div>
 
     <!-- Cinematic 6 Areas Showcase (Obermann Project-Card Grid Style) -->
@@ -100,4 +173,21 @@ import { AREAS } from '../../data/portfolioData';
     </div>
 
   </div>
+  <style is:global>
+    .hex-shape {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .orbit-item {
+      --radius: 120px;
+    }
+    @media (min-width: 768px) {
+      .orbit-item {
+        --radius: 210px;
+      }
+    }
+    /* Smooth scrolling for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </section>
