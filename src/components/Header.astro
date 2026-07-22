@@ -12,7 +12,7 @@ const navLinks = [
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 px-4 sm:px-8" id="main-header">
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3 md:py-5 px-4 sm:px-8" id="main-header">
   <div class="max-w-7xl mx-auto glass-panel rounded-full px-6 py-3.5 flex items-center justify-between shadow-2xl border border-[#E5E7EB]/15 transition-all duration-300">
     
     <!-- Brand Monogram & Logo -->
@@ -135,11 +135,11 @@ const navLinks = [
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 30) {
-      header?.classList.add('py-2');
-      header?.classList.remove('py-5');
+      header?.classList.add('md:py-2');
+      header?.classList.remove('md:py-5');
     } else {
-      header?.classList.add('py-5');
-      header?.classList.remove('py-2');
+      header?.classList.add('md:py-5');
+      header?.classList.remove('md:py-2');
     }
 
     let current = '';

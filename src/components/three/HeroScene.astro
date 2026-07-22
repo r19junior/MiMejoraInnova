@@ -87,8 +87,8 @@
             // Give it 3D depth volume (random z)
             const nz = (Math.random() - 0.5) * 0.4; 
 
-            // Scale up the points in the 3D space. Make it much smaller on mobile so it fits the narrow screen width.
-            const scale = isMobile ? 1.6 : 4.8;
+            // Scale up the points in the 3D space. Make it smaller on mobile so it doesn't overflow.
+            const scale = isMobile ? 2.8 : 4.8;
             const px = nx * scale;
             const py = ny * scale;
             const pz = nz * scale;
@@ -142,8 +142,22 @@
     });
 
     const clock = new THREE.Clock();
+    let isVisible = true;
+
+    // HUGE Optimization: Only run the 3D loop if the hero section is actually visible!
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isVisible = entry.isIntersecting;
+      });
+    }, { threshold: 0 });
+    observer.observe(container);
+
     function animate() {
       requestAnimationFrame(animate);
+      
+      // Pause all GPU calculations if the user scrolled down
+      if (!isVisible) return;
+
       const elapsed = clock.getElapsedTime();
 
       // Outer gear rotates constantly
